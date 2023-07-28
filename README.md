@@ -1,4 +1,4 @@
-# Haywire-web-weavers
+# Spring Tech '23
 
 pip install -r requirements.txt
 
