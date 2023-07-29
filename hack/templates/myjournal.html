@@ -1,0 +1,18 @@
+{%extends "base.html"%}
+{%block content%}
+
+<br><br><br><br><br><br>
+  <a class="addition" href="{{url_for('make_journal')}}">
+    <i class="fa fa-plus-square-o" style="font-size:24px"></i>
+    Add new journal</a><br>
+  {%for i in journal%}
+
+  <div class="allcards" style="display:inline-block;">
+  <div class="card" style="width: 20rem;">
+    <div class="card-body">
+      <p style="font-size: larger;" class="card-text">{{i.text}}</p>
+  </div>
+</div>
+</div>
+  {%endfor%}
+{%endblock%}

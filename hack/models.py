@@ -1,7 +1,7 @@
 from hack import db,login_manager
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
-from datetime import datetime
+from datetime import datetime, date
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -37,3 +37,9 @@ class UserProduct(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)
     qty = db.Column(db.Integer, default=1)
+
+class Journal(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    date = db.Column(db.String, default=str(date.today()))
+    text = db.Column(db.String)

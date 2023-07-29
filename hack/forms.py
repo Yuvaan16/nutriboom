@@ -20,3 +20,7 @@ class RegForm(FlaskForm):
 
 class SearchForm(FlaskForm):
     query = StringField('search', validators=[DataRequired()])
+
+class JournalForm(FlaskForm):
+    text = TextAreaField('Add Text', validators=[DataRequired()])
+    submit = SubmitField("Register")

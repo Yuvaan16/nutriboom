@@ -1,8 +1,8 @@
 from hack import app, create_db, db
 from flask import render_template, redirect, abort, url_for, flash, request
 from flask_login import current_user, login_user, logout_user, login_required
-from hack.forms import LoginForm, RegForm, SearchForm
-from hack.models import User, Product, UserProduct
+from hack.forms import LoginForm, RegForm, SearchForm, JournalForm
+from hack.models import User, Product, UserProduct, Journal
 from werkzeug.security import generate_password_hash, check_password_hash
 import uuid as uuid
 import stripe
@@ -201,6 +201,25 @@ def charge():
 
     return render_template('charge.html', amount=amount)
 
+@app.route('/myjournal')
+@login_required
+def journal():
+    journal = Journal.query.filter_by(user_id=current_user.id).all()
+    return render_template('myjournal.html', journal=journal)
+    
+
+@app.route('/journal', methods=['GET', 'POST'])
+@login_required
+def make_journal():
+    form = JournalForm()
+    if form.validate_on_submit():
+        data = Journal(text=form.text.data, user_id=current_user.id)
+        db.session.add(data)
+        db.session.commit()
+        
+        return redirect('journal')
+    return render_template('journal.html', form=form)
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
