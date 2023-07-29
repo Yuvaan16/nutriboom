@@ -13,8 +13,8 @@ app.config['SECRET_KEY'] = 'secret'
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+os.path.join(basedir,'data.sqlite')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['STRIPE_SECRET_KEY'] = 'sk_test_51MMRkOSEzPBlgs1CJdlZhhC2OCxiFs74QjzGnPWhP7ardKmClTYvbOakK3JRSs0erzLNxIpvWxL2KfBZ4gINAd3q003ReAG2bm'
-app.config['STRIPE_PUBLISHABLE_KEY'] = 'pk_test_51MMRkOSEzPBlgs1Ck16EBWSuxXEjbbbOKRtsACj65hPmP2B2gfy1BeWYGsfOxp60IyZM7A40h8tJzTbgCHr1vVeC00kwxztzSQ'
+app.config['STRIPE_SECRET_KEY'] = 'sk_test_tR3PYbcVNZZ796tH88S4VQ2u'
+app.config['STRIPE_PUBLISHABLE_KEY'] = 'pk_test_51BTUDGJAJfZb9HEBwDg86TN1KNprHjkfipXmEDMb0gSCassK5T3ZfxsAbcgKVmAIXF7oZ6ItlZZbXO6idTHE67IM007EwQ4uN3'
 db = SQLAlchemy(app)
 Migrate(app,db)
 

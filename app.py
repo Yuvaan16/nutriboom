@@ -161,12 +161,45 @@ def thank_you():
 @app.route('/epsilon', methods=['GET', 'POST'])
 @login_required
 def epsilon():
-    return render_template('epsilon_new.html')
+    if current_user.premium != 0:
+        return render_template('epsilon_new.html')
+    else:
+        abort(403)
 
 @app.route('/timer', methods=['GET', 'POST'])
 @login_required
 def timer():
-    return render_template('timer.html')
+    if current_user.premium != 0:
+        return render_template('timer.html')
+    else:
+        abort(403)
+
+@app.route('/getpremium')
+@login_required
+def get_premium():
+    return render_template('getpremium.html')
+
+@app.route('/charge')
+@login_required
+def charge():
+    amount = 599
+
+    customer = stripe.Customer.create(
+        email='customer@example.com',
+        source=request.form['stripeToken']
+    )
+
+    charge = stripe.Charge.create(
+        customer=customer.id,
+        amount=amount,
+        currency='inr',
+        description='Premium Subscription Charge'
+    )
+
+    current_user.premium = 1
+    db.session.commit()
+
+    return render_template('charge.html', amount=amount)
 
 
 if __name__ == '__main__':

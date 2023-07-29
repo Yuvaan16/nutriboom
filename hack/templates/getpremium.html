@@ -1,0 +1,13 @@
+<form action="/charge" method="post">
+    <article>
+      <label>
+        <span>Amount is 599.00</span>
+      </label>
+    </article>
+  
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="{{ key }}"
+            data-description="A Premium Subscription Charge"
+            data-amount="599"
+            data-locale="auto"></script>
+  </form>

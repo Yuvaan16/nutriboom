@@ -14,6 +14,7 @@ class User(db.Model,UserMixin):
     email = db.Column(db.String(64),index=True)
     password = db.Column(db.String)
     products = db.relationship('UserProduct', backref='user')
+    premium = db.Column(db.Integer, default=0)
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
@@ -22,6 +23,7 @@ class User(db.Model,UserMixin):
         self.email = email
         self.username = username
         self.password = generate_password_hash(password)
+        
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
