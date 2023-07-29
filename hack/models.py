@@ -15,6 +15,14 @@ class User(db.Model,UserMixin):
     password = db.Column(db.String)
     products = db.relationship('UserProduct', backref='user')
 
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
+
+    def __init__(self, username, email, password):
+        self.email = email
+        self.username = username
+        self.password = generate_password_hash(password)
+
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     image = db.Column(db.String, default='default.png')

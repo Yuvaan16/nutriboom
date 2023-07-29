@@ -20,50 +20,40 @@ def home():
     return render_template('index.html', searchform=searchform)
 
 @app.route('/reg', methods=['GET', 'POST'])
-def reg():
-    searchform = SearchForm()
+def register():
     form = RegForm()
-    mess=''
     if form.validate_on_submit():
-        email = form.email.data
-        username = form.username.data
-        password = form.password.data
-        user = User.query.filter_by(email=email).first()
-        if user:
-            mess = 'Account already exists'
-        else:
-            new_user = User(username=username, email=email, password=generate_password_hash(password))
-            db.session.add(new_user)
-            db.session.commit()
-            if current_user.is_authenticated:
-                return redirect('admin')
-            else:
-                login_user(new_user)
-                return redirect(url_for('home'))
-    if current_user.is_authenticated and current_user.username != 'XINO':
-        return abort(404)
-    return render_template('reg.html', searchform=searchform, form=form, mess=mess)
+
+        user = User(username=form.username.data,
+                    email=form.email.data,
+                    password=form.password.data)
+        db.session.add(user)
+        db.session.commit()
+
+        return redirect(url_for('login'))
+    return render_template('reg.html', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    searchform = SearchForm()
     form = LoginForm()
-    mess=''
+    error = ''
+    print(form.validate_on_submit())
     if form.validate_on_submit():
-        email = form.email.data
-        password = form.password.data
-        user = User.query.filter_by(email=email).first()
-        if not user:
-            mess = 'Email not found'
-        else:
-            if check_password_hash(user.password, password):
-                login_user(user, remember=True)
-                return redirect(url_for('home'))
-            else:
-                mess = 'Incorrect password'
-    if current_user.is_authenticated and current_user.username != 'XINO':
-        return abort(404)
-    return render_template('login.html', searchform=searchform, mess=mess, form=form)
+        print('hi my name is')
+        user = User.query.filter_by(email=form.email.data).first()
+
+        if user is not None and user.check_password(form.password.data):
+            login_user(user)
+
+            next = request.args.get('next')
+            if next == None or not next[0] == '/':
+                next = url_for('home')
+            return redirect(next)
+        elif user is not None and user.check_password(form.password.data) == False:
+            error = 'Wrong Password'
+        elif user is None:
+            error = 'No such login Pls create one'
+    return render_template('login.html', form=form, error=error)
 
 @app.route('/logout')
 @login_required

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://api.fontshare.com/v2/css?f[]=boska@400,700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400&f[]=panchang@600&display=swap" rel="stylesheet">
+</head>
+
+<body style="font-family: 'Satoshi', sans-serif;" class="bg-[#FFFAF7]">
+  <div class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="p-4 max-w-sm w-full">
+      <h1 class="text-4xl text-center text-yellow-800 font-semibold mb-4" style="font-family: 'Boska', sans-serif;">Meditation Timer</h1>
+      <div class="flex justify-center mb-6">
+        <button class="px-4 py-2 bg-[#FFFAF7] border border-yellow-800 rounded hover:bg-yellow-600 shadow-lg cursor-pointer hover:text-white" onclick="startSession(15)">15 Min</button>
+        <button class="px-4 py-2 bg-[#FFFAF7] border border-yellow-800 rounded hover:bg-yellow-600 shadow-lg cursor-pointer hover:text-white ml-2" onclick="startSession(30)">30 Min</button>
+        <button class="px-4 py-2 bg-[#FFFAF7] border border-yellow-800 rounded hover:bg-yellow-600 shadow-lg cursor-pointer hover:text-white ml-2" onclick="startSession(60)">60 Min</button>
+        <button class="px-4 py-2 bg-[#FFFAF7] border border-yellow-800 rounded hover:bg-yellow-600 shadow-lg cursor-pointer hover:text-white ml-2" onclick="startSession(120)">120 Min</button>
+        <button id="startButton" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-800 ml-2" onclick="startTimer()" disabled>Start Session</button>
+        <button id="pauseButton" class="px-4 py-2 bg-yellow-600 text-white rounded hover:bg-yellow-800 ml-2" onclick="pauseTimer()" disabled>Pause</button>
+        <button id="resumeButton" class="px-4 py-2 bg-yellow-600 text-white rounded hover:bg-yellow-800 ml-2" onclick="resumeTimer()" style="display:none;">Resume</button>
+      </div>
+      <div class="text-center">
+        <p id="timer" class="text-3xl font-bold">00:00</p>
+        <div class="relative pt-1">
+          <div class="flex mb-2 items-center justify-between">
+            <div>
+              <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-yellow-600 bg-orange-100">
+                Progress
+              </span>
+            </div>
+            <div class="text-right">
+              <!-- Set the initial progress value to 0% -->
+              <span id="progressText" class="text-xs font-semibold inline-block text-yellow-600">0%</span>
+            </div>
+          </div>
+          <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-orange-100">
+            <div id="progressBar" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-yellow-500"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-6">
+        <p class="text-sm font-medium mb-2">Choose Meditation Sound:</p>
+        <div class="flex justify-center">
+            <button id="whiteNoiseBtn" class="px-2 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 m-1" onclick="selectMeditationSound('./white.mp3')">White Noise</button>
+            <button id="yogaMusicBtn" class="px-2 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 m-1" onclick="selectMeditationSound('./yoga.mp3')">Relaxing Yoga Music</button>
+            <button id="lofiBtn" class="px-2 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 m-1" onclick="selectMeditationSound('./lofi.mp3')">Lo-fi</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Audio element for meditation sounds -->
+  <audio id="whiteNoise" preload="auto" loop>
+    <source src="./lofi.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const timerElement = document.getElementById('timer');
+    const startButton = document.getElementById('startButton');
+    const pauseButton = document.getElementById('pauseButton');
+    const resumeButton = document.getElementById('resumeButton');
+    const progressBar = document.getElementById('progressBar');
+    const progressText = document.getElementById('progressText');
+    const whiteNoiseAudio = document.getElementById('whiteNoise');
+    let duration = 0;
+    let timeLeft = 0;
+    let timerInterval;
+    let paused = false;
+
+    function startSession(sessionDuration) {
+      if (isSessionRunning) {
+        window.location.reload(); // Refresh the page if a session is already running
+        return;
+      }
+
+      duration = sessionDuration;
+      timeLeft = duration * 60;
+      updateTimerDisplay(timeLeft);
+      updateProgress(0); // Set the initial progress to 0%
+      startButton.disabled = false;
+      pauseButton.disabled = true;
+      resumeButton.style.display = 'none';
+      paused = false;
+    }
+
+    function startTimer() {
+      if (duration === 0) return; // Check if a session has been selected
+      isSessionRunning = true; // Set the flag to indicate that a session is running
+      startButton.disabled = true;
+      pauseButton.disabled = false;
+      resumeButton.style.display = 'none';
+
+      timerInterval = setInterval(updateTime, 1000);
+      paused = false;
+      whiteNoiseAudio.play(); // Start playing the selected sound
+    }
+
+    function updateTime() {
+      timeLeft--;
+      const progressPercentage = ((duration * 60 - timeLeft) / (duration * 60)) * 100;
+      updateTimerDisplay(timeLeft);
+      updateProgress(progressPercentage);
+
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        startButton.disabled = false;
+        pauseButton.disabled = true;
+        resumeButton.style.display = 'none';
+        isSessionRunning = false; // Reset the session running flag
+        paused = false;
+        whiteNoiseAudio.pause(); // Pause the audio when the session is paused
+      }
+    }
+
+    function updateTimerDisplay(seconds) {
+      const minutes = Math.floor(seconds / 60);
+      const remainderSeconds = seconds % 60;
+      const display = `${minutes.toString().padStart(2, '0')}:${remainderSeconds.toString().padStart(2, '0')}`;
+      timerElement.textContent = display;
+    }
+
+    function updateProgress(percentage) {
+      progressBar.style.width = `${percentage}%`;
+      progressBar.setAttribute('aria-valuenow', percentage);
+      const progressTextValue = Math.floor(percentage);
+      progressText.textContent = `${progressTextValue}%`;
+    }
+
+    function pauseTimer() {
+      clearInterval(timerInterval);
+      startButton.style.display = 'none';
+      pauseButton.style.display = 'none';
+      resumeButton.style.display = 'inline-block';
+      paused = true;
+      whiteNoiseAudio.pause(); // Pause the audio when the session is paused
+    }
+
+    function resumeTimer() {
+      startTimer();
+      startButton.style.display = 'inline-block';
+      pauseButton.style.display = 'inline-block';
+      resumeButton.style.display = 'none';
+      whiteNoiseAudio.play(); // Resume playing the audio when the session is resumed
+    }
+
+    let isSessionRunning = false; // Track if a session is currently running
+
+    function selectMeditationSound(soundPath) {
+      whiteNoiseAudio.src = soundPath;
+
+      const whiteNoiseBtn = document.getElementById('whiteNoiseBtn');
+      const yogaMusicBtn = document.getElementById('yogaMusicBtn');
+      const lofiBtn = document.getElementById('lofiBtn');
+
+      whiteNoiseBtn.classList.remove('bg-yellow-700');
+      yogaMusicBtn.classList.remove('bg-yellow-700');
+      lofiBtn.classList.remove('bg-yellow-700');
+
+      if (soundPath === './white.mp3') {
+        whiteNoiseBtn.classList.add('bg-yellow-700');
+      } else if (soundPath === './yoga.mp3') {
+        yogaMusicBtn.classList.add('bg-yellow-700');
+      } else if (soundPath === './lofi.mp3') {
+        lofiBtn.classList.add('bg-yellow-700');
+      }
+    }
+
+  </script>
+</body>
+</html>
