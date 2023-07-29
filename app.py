@@ -59,7 +59,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect('home')
+    return redirect(url_for('home'))
 
 @app.route('/explore')
 def explore():
@@ -162,6 +162,11 @@ def thank_you():
 @login_required
 def epsilon():
     return render_template('epsilon_new.html')
+
+@app.route('/timer', methods=['GET', 'POST'])
+@login_required
+def timer():
+    return render_template('timer.html')
 
 
 if __name__ == '__main__':

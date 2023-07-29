@@ -23,27 +23,30 @@
 					<ul class="items-stretch hidden space-x-3 lg:flex">
 						<li class="flex">
 							<a rel="noopener noreferrer" href="{{url_for('epsilon')}}"
-								class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Link</a>
+								class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Dashboard</a>
 						</li>
+						{%if not current_user.is_authenticated%}
 						<li class="flex">
-							<a rel="noopener noreferrer" href="#"
-								class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Link</a>
+							<a rel="noopener noreferrer" href="{{url_for('register')}}"
+								class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Register</a>
 						</li>
-						<li class="flex">
-							<a rel="noopener noreferrer" href="#"
-								class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Link</a>
-						</li>
-						<li class="flex">
-							<a rel="noopener noreferrer" href="#"
-								class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Link</a>
-						</li>
+						{%endif%}
 					</ul>
 				</div>
-				<a href="/login"><div class="items-center flex-shrink-0 hidden lg:flex">
+				  {%if current_user.is_authenticated%}
+
+					<a href="{{url_for('logout')}}"><div class="items-center flex-shrink-0 hidden lg:flex">
+						<button
+							class="px-10 py-2 font-semibold rounded-r-full rounded-bl-full hover:border-2 hover:border-yellow-600 hover:text-yellow-600 hover:bg-transparent bg-yellow-600 text-gray-50">Logout</button></a>
+					</div>
+
+					{%else%}
+				<a href="{{url_for('login')}}"><div class="items-center flex-shrink-0 hidden lg:flex">
 					<button
 						class="px-10 py-2 font-semibold rounded-r-full rounded-bl-full hover:border-2 hover:border-yellow-600 hover:text-yellow-600 hover:bg-transparent bg-yellow-600 text-gray-50">Log
 						in</button></a>
 				</div>
+				{%endif%}
 			<button class="p-4 lg:hidden">
 					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
 						class="w-6 h-6 text-gray-800">
@@ -54,10 +57,10 @@
 			</div>
 		</header>
    </div>
-    
-     
+
+
     {% block content %}
-        
+
     {% endblock content %}
     <script>
         const openCardButton = document.getElementById('open-card-button');
@@ -114,4 +117,3 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </body>
 </html>
-

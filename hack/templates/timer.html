@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://api.fontshare.com/v2/css?f[]=boska@400,700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400&f[]=panchang@600&display=swap" rel="stylesheet">
-</head>
 
-<body style="font-family: 'Satoshi', sans-serif;" class="bg-[#FFFAF7]">
+{% extends 'base.html' %}
+{% block content %}
   <div class="min-h-screen flex items-center justify-center bg-gray-100">
     <div class="p-4 max-w-sm w-full">
       <h1 class="text-4xl text-center text-yellow-800 font-semibold mb-4" style="font-family: 'Boska', sans-serif;">Meditation Timer</h1>
@@ -171,5 +162,4 @@
     }
 
   </script>
-</body>
-</html>
+        {% endblock content %}
