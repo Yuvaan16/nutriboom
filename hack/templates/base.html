@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="../static/styles.css">
 </head>
 
-<body style="font-family: 'Satoshi', sans-serif;">
+<body style="font-family: 'Satoshi', sans-serif; overflow-x: hidden;">
 	<section class="bg-[#FFFAF7] ">
 		<header class="p-4 text-gray-800">
 			<div class="container flex justify-between h-16 mx-auto">
@@ -22,7 +22,7 @@
 					</a>
 					<ul class="items-stretch hidden space-x-3 lg:flex">
 						<li class="flex">
-							<a rel="noopener noreferrer" href="/epsilon"
+							<a rel="noopener noreferrer" href="{{url_for('epsilon')}}"
 								class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Link</a>
 						</li>
 						<li class="flex">
@@ -55,29 +55,7 @@
 		</header>
    </div>
     
-     <div id="card" class="absolute z-10 hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-[#faf0e6]">
-    <div class="h-[80vh] grid grid-rows text-center w-full mx-10">
-       <a href="/">
-           <h1 class="lg:text-9xl text-6xl hover:bg-[#C8AD7F] hover:text-[#faf0e6]">Home</h1>
-       </a>
-        <a href="/explore">
-           <h1 class="lg:text-9xl text-6xl hover:bg-[#C8AD7F] hover:text-[#faf0e6]">Explore</h1>
-       </a>
-        {% if not current_user.is_authenticated %}
-        <a href="/login">
-            <h1 class="lg:text-9xl text-6xl hover:bg-[#C8AD7F] hover:text-[#faf0e6]">Login</h1>
-        </a>
-         <a href="/reg">
-            <h1 class="lg:text-9xl text-6xl hover:bg-[#C8AD7F] hover:text-[#faf0e6]">Signup</h1>
-        </a>
-        {% else %}
-        <a href="/logout">
-            <h1 class="lg:text-9xl text-6xl hover:bg-[#C8AD7F] hover:text-[#faf0e6]">Sign out</h1>
-        </a>
-        {% endif %}
-
-    </div>
-</div>
+     
     {% block content %}
         
     {% endblock content %}
