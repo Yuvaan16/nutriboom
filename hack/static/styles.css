@@ -38,9 +38,7 @@
     font-family: myFirstFont;
     src: url(./static/font/Fonia.ttf);
     }
-  section {
-    border-radius: 50px;
-  }
+  
   .cents {
     margin: 8%;
   }
