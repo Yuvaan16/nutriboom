@@ -174,6 +174,14 @@ def vidlib():
     else:
         abort(403)
 
+@app.route('/survey', methods=['GET', 'POST'])
+@login_required
+def survey():
+    if current_user.premium == 0:
+        return render_template('survey.html')
+    else:
+        abort(403)
+
 @app.route('/timer', methods=['GET', 'POST'])
 @login_required
 def timer():

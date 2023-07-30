@@ -1,9 +1,9 @@
 :root {
-  #6FB895
-  #599377
-  #EC6C67
-  #010100
-  #C5E3D5
+  --mint: #6fb895;
+  --viridian: #599377;
+  --bittersweet: #ec6c67;
+  --mint-green: #c5e3d5;
+  --black: #010100;
 }
 .grid-container {
     display: grid;
