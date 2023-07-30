@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 <main class="container mx-auto p-4 mt-10">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {% for i in products %}
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {% for i in products %}
+   
       <div class=" p-4 w-full">
-        <a class="block relative h-48 rounded overflow-hidden">
-          <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="{{url_for('static', filename=i.image.replace('/static/', ''))}}" alt="{{i.name}}">
+     
+        <a href="/products/{{i.id}}" class="block relative h-48 rounded overflow-hidden">
+          <img alt="ecommerce" class="object-cover object-center w-full h-full block"
+            src="{{url_for('static', filename=i.image.replace('/static/', ''))}}" alt="{{i.name}}">
         </a>
         <div class="mt-4">
           <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{i.category}}</h3>
@@ -13,6 +16,7 @@
           <p class="mt-1">Rs. {{i.price}}</p>
         </div>
       </div>
+    </a>
       <!-- <div class="rounded-lg shadow-md p-4" style="background-color: #cdb891;">
         <a href="/products/{{i.id}}">
           <img src="{{url_for('static', filename=i.image.replace('/static/', ''))}}" alt="{{i.name}}" class="w-64 h-auto mb-4 ml-auto mr-auto">
@@ -23,7 +27,7 @@
         <a href="/addtocart/{{i.id}}"><button type="button" class="h-10 w-40 bg-[#a18167] mt-5 rounded-full text-white text-xl">Add to Cart</button></a>
       </div> -->
 
-      
+
       {% endfor %}
-  </main>
+</main>
 {% endblock content %}
