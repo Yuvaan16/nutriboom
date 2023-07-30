@@ -10,7 +10,7 @@
                   <form enctype="multipart/form-data" method="POST">
                       {{form.hidden_tag()}}
                       <div class="h-[50vh]">
-                          {{form.text(class='h-full w-full rounded-3xl border-2 border-yellow-600 p-5', placeholder='write your mfin thoughts')}}
+                          {{form.text(class='h-full w-full rounded-3xl border-2 border-yellow-600 p-5', placeholder='write your thoughts!')}}
                       </div>
                       <div class="mb-8">
                         <br>
@@ -26,7 +26,7 @@
                   {%for i in journal[0:3]%}
 
 
-                  <div class="card" style="width: 20rem;">
+                  <div class="card mb-4" style="width: 20rem;">
                     <div class="h-20 w-full bg-yellow-700 rounded-3xl py-3 px-3">
                       <h1 class="text-[1rem] font-bold">{{i.date}}</h1>
                       <h1 class="text-[0.8rem] text-gray-200">{{i.text[0:40]}} .....</h1>
@@ -43,13 +43,13 @@
         </div>
 
 <div id="Modal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black bg-opacity-50 flex items-center justify-center">
-  <div class="bg-white rounded-lg p-8 w-3/4">
+  <div class="bg-yellow-600 rounded-lg p-8 w-3/4">
       <h2 class="text-xl font-bold mb-4"></h2>
       <div class="grid grid-cols-1 gap-4">
         <div class="allcards" style="display:inline-block;">
         {%for i in journal%}
         <a href="{{url_for('single', id=i.id)}}">
-        <div class="card" style="width: 20rem;">
+        <div class="card mb-4" style="width: 20rem;">
           <div class="h-20 w-full bg-yellow-700 rounded-3xl py-3 px-3">
             <h1 class="text-[1rem] font-bold">{{i.date}}</h1>
             <h1 class="text-[0.8rem] text-gray-200">{{i.text[0:40]}} .....</h1>
