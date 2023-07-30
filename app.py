@@ -17,9 +17,9 @@ create_db(app)
 @app.route('/')
 def home():
     searchform = SearchForm()
-    # product = Product(category="gummy",
-    #                 name="uv kee mummy",
-    #                 price=69696)
+    # product = Product(category="Supplements",
+    #                 name="Keto Gummy Supplements",
+    #                 price=199)
     # db.session.add(product)
     # db.session.commit()
     return render_template('index.html', searchform=searchform)
