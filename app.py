@@ -202,7 +202,7 @@ def survey():
 @app.route('/timer', methods=['GET', 'POST'])
 @login_required
 def timer():
-    if current_user.premium != 1:
+    if current_user.premium == 1:
         return render_template('timer.html')
     else:
         abort(403)
