@@ -29,7 +29,7 @@
 
 						</li>
 						{%if not current_user.is_authenticated%}
-						<li class="flex">
+						<li class="flex hidden">
 							<a rel="noopener noreferrer" href="{{url_for('register')}}"
 								class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Register</a>
 
@@ -61,7 +61,8 @@
 					{%else%}
 			<div class="flex flex-cols  "><a href="{{url_for('register')}}"><div class="items-center flex-shrink-0 hidden lg:flex">
 				<button
-					class="px-10 py-2 mr-5 font-semibold rounded-l-full rounded-br-full  hover:border-2 hover:border-yellow-600 hover:text-yellow-600 hover:bg-transparent bg-yellow-600 text-gray-50">Register</button></a>	<a href="{{url_for('login')}}"><div class="items-center flex-shrink-0 hidden lg:flex">
+					class="px-10 py-2 mr-5 font-semibold rounded-l-full rounded-br-full  hover:border-2 hover:border-yellow-600 hover:text-yellow-600 hover:bg-transparent bg-yellow-600 text-gray-50">Register</button></a>	
+					<a href="{{url_for('login')}}"><div class="items-center flex-shrink-0 hidden lg:flex">
 					<button
 						class="px-10 py-2 font-semibold rounded-r-full rounded-bl-full hover:border-2 hover:border-yellow-600 hover:text-yellow-600 hover:bg-transparent bg-yellow-600 text-gray-50">Log
 						in</button></a>

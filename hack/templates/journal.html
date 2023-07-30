@@ -42,24 +42,25 @@
             </div>
         </div>
 
-<div id="Modal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black bg-opacity-50 flex items-center justify-center">
-  <div class="bg-yellow-600 rounded-lg p-8 w-3/4">
+<div id="Modal" class="h-[100%] m-auto fixed inset-0 z-50 hidden overflow-y-auto bg-black bg-opacity-50 flex items-center justify-center">
+  <div class="rounded-lg p-8 w-3/4 h-[100%]">
       <h2 class="text-xl font-bold mb-4"></h2>
-      <div class="grid grid-cols-1 gap-4">
+      <div class=" bg-yellow-600 rounded-t-3xl p-4 flex justify-center items-center">
         <div class="allcards" style="display:inline-block;">
         {%for i in journal%}
         <a href="{{url_for('single', id=i.id)}}">
         <div class="card mb-4" style="width: 20rem;">
           <div class="h-20 w-full bg-yellow-700 rounded-3xl py-3 px-3">
-            <h1 class="text-[1rem] font-bold">{{i.date}}</h1>
-            <h1 class="text-[0.8rem] text-gray-200">{{i.text[0:40]}} .....</h1>
+            <h1 class="text-[1rem] text-white font-bold">{{i.date}}</h1>
+            <h1 class="text-[0.8rem] text-white">{{i.text[0:40]}} .....</h1>
         </div></a>
       </div>
-
         {%endfor%}
         </div>
       </div>
-      <button id="closeModalBtn" class="mt-6 px-4 py-2 bg-red-500 text-white rounded">Close</button>
+      <div class="w-[100%] bg-yellow-600 rounded-b-3xl">
+        <button id="closeModalBtn" class="m-6 p-4 bg-red-500 text-white rounded">Close</button>
+      </div><br>
   </div>
 </div>
 
