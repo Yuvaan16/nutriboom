@@ -12,7 +12,8 @@
 {% block content %}
 
 
-<body style="font-family: 'Satoshi', sans-serif;" class=" relative bg-[url('{{url_for('static', filename='default.png')}}')] bg-cover ">
+<body style="font-family: 'Satoshi', sans-serif;" class=" relative bg-[url('{{url_for('static', filename='default.png')}}')] bg-cover overflow-hidden">
+    <Div class="h-screen w-screen backdrop-brightness-50">
     <header class="p-4 text-gray-800  bg-transparent">
         <div class="container flex justify-between h-16 mx-auto">
             <div class="flex">
@@ -41,8 +42,7 @@
             <a href="/login">
                 <div class="items-center flex-shrink-0 hidden lg:flex">
                     <button
-                        class="px-10 py-2 font-semibold rounded-r-full rounded-bl-full bg-black text-white hover:text-black hover:bg-transparent hover:border-2 hover:border-black">Log
-                        in</button>
+                    class="px-10 py-2 mr-5 font-semibold rounded-r-full rounded-bl-full mt-5  hover:border-2 hover:border-yellow-600 hover:text-yellow-600 hover:bg-transparent bg-yellow-600 text-gray-50">Log in</button>
             </a>
         </div>
         <button class="p-4 lg:hidden">
@@ -54,13 +54,15 @@
         </button>
         </div>
     </header>
-<div class=" py-32 h-[100vh] w-full absolute">
-<div class="h-[60vh] rounded-3xl ml-32 w-[50vh] bg-white p-5">
-    <div class="text-black font-bold text-2xl">{{prod.name}}</div>
+<div class=" py-20 h-[100vh] w-full absolute">
+<div class="h-[60vh] rounded-3xl ml-32 w-[50vh] bg-yellow-800 p-5">
+    <div class="text-yellow-600 font-bold text-2xl">{{prod.name}}</div>
     <div class="mt-2"><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon></div>
-    <Div class="text-gray-400 mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sed, possimus amet autem adipisci rem suscipit ipsam saepe quasi excepturi, accusantium aperiam. A ex quod eveniet voluptate, voluptas asperiores quis.</Div>
-    <div class="text-6xl font-bold mt-10">₹{{prod.price}}</div>
-    <a href="/addtocart/{{prod.id}}">   <button class="mt-5 px-5 py-2 bg-black text-white hover:text-black hover:bg-white hover:border-2 hover:border-black rounded-full">Add to Cart</button></a>
+    <Div class="text-gray-100 mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sed, possimus amet autem adipisci rem suscipit ipsam saepe quasi excepturi, accusantium aperiam. A ex quod eveniet voluptate, voluptas asperiores quis.</Div>
+    <div class="text-6xl font-bold text-yellow-600  mt-10">₹{{prod.price}}</div>
+    <a href="/addtocart/{{prod.id}}">   <button
+        class="px-10 py-2 mr-5 font-semibold rounded-r-full rounded-bl-full mt-5  hover:border-2 hover:border-yellow-600 hover:text-yellow-600 hover:bg-transparent bg-yellow-600 text-gray-50">Add to cart</button></a>
 </div>
 </div>
+</Div>
 {% endblock content %}
