@@ -12,14 +12,14 @@
           {{ form.email(class='p-5 text-xl w-full h-12 border-2 mt-2 border-black', placeholder='user@example.com') }}
           {% if form.email.errors %}
             {% for error in form.email.errors %}
-              <small class="error">{{ error }}</small>
+              <small class="error">{{ error }}</small><br>
             {% endfor %}
           {% endif %}
           <label for="password">Password</label>
           {{ form.password(class='p-5 text-xl w-full h-12 border-2 mt-2 border-black', placeholder='••••••') }}
           {% if form.password.errors %}
             {% for error in form.password.errors %}
-              <small class="error">{{ error }}</small>
+              <small class="error">{{ error }}</small><br>
             {% endfor %}
           {% endif %}
           {{ form.submit(class="w-full h-12 bg-black text-white mt-5") }}
