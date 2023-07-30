@@ -1,13 +1,27 @@
-<form action="/charge" method="post">
-    <article>
-      <label>
-        <span>Amount is 599.00</span>
-      </label>
-    </article>
-  
-    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-key="{{ key }}"
-            data-description="A Premium Subscription Charge"
-            data-amount="599"
-            data-locale="auto"></script>
-  </form>
+{% extends 'base.html' %}
+{% block content %}
+<div class="flex flex-cols justify-center items-center h-screen -mt-20  ">
+  <div class="h-80 w-[50rem] bg-yellow-600 rounded-3xl flex flex-cols">
+      <div class="w-1/2 flex flex-cols justify-center items-center">
+          <img src="{{url_for('static', filename='testi.png')}}" class="w-[90rem]">
+      </div>
+      <div class="w-1/2 p-10">
+          <h1 class="text-3xl text-yellow-800 font-bold">
+              Get access to all premium features with Epsilon
+          </h1>
+          <form action="/charge" method="post">
+              <h1 class="text-xl text-white/70 font-bold mb-10">
+                  Now available for Just<br>
+                  <S class="bg-yellow-800 px-2 py-1 rounded-full  ">₹699</S> &nbsp;₹599/mo
+              </h1>
+              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="{{ key }}"
+              data-description="EPSILON Monthly Fee"
+              data-amount="599"
+              data-locale="auto"></script>
+          </form>
+      </div>
+  </div>
+
+
+</div>{% endblock content %}
