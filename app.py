@@ -6,7 +6,7 @@ from hack.models import User, Product, UserProduct, Journal
 from werkzeug.security import generate_password_hash, check_password_hash
 import uuid as uuid
 import stripe
-from sqlalchemy import or_
+from sqlalchemy import or_,desc,asc
 
 
 stripe.api_key = app.config['STRIPE_SECRET_KEY']
@@ -217,25 +217,27 @@ def charge():
 
     return render_template('charge.html', amount=amount)
 
-@app.route('/myjournal')
-@login_required
-def journal():
-    journal = Journal.query.filter_by(user_id=current_user.id).all()
-    return render_template('myjournal.html', journal=journal)
-    
+
 
 @app.route('/journal', methods=['GET', 'POST'])
 @login_required
-def make_journal():
+def journal():
     form = JournalForm()
+    journal = Journal.query.filter_by(user_id=current_user.id).order_by(Journal.id.desc())
     if form.validate_on_submit():
         data = Journal(text=form.text.data, user_id=current_user.id)
         db.session.add(data)
         db.session.commit()
-        
-        return redirect('journal')
-    return render_template('journal.html', form=form)
-    
 
+        return redirect('journal')
+    return render_template('journal.html', form=form, journal=journal)
+
+@app.route('/journal/<id>', methods=['GET','POST'])
+@login_required
+def single(id):
+    journal = Journal.query.get(id)
+    if journal.id != current_user.id:
+        abort(403)
+    return render_template('journal_single.html' ,journal=journal)
 if __name__ == '__main__':
     app.run(debug=True)

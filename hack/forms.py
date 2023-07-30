@@ -23,4 +23,4 @@ class SearchForm(FlaskForm):
 
 class JournalForm(FlaskForm):
     text = TextAreaField('Add Text', validators=[DataRequired()])
-    submit = SubmitField("Register")
+    submit = SubmitField("Publish ")
