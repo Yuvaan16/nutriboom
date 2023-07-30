@@ -1,7 +1,7 @@
 
 {% extends 'base.html' %}
 {% block content %}
-  <div class="min-h-screen flex items-center justify-center bg-gray-100">
+  <div class="min-h-[70vh] flex items-center justify-center">
     <div class="p-4 max-w-sm w-full">
       <h1 class="text-4xl text-center text-yellow-800 font-semibold mb-4" style="font-family: 'Playfair Display', sans-serif;">Meditation Timer</h1>
       <div class="flex justify-center mb-6">
@@ -36,9 +36,9 @@
       <div class="text-center mt-6">
         <p class="text-sm font-medium mb-2">Choose Meditation Sound:</p>
         <div class="flex justify-center">
-            <button id="whiteNoiseBtn" class="px-2 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 m-1" onclick="selectMeditationSound('./white.mp3')">White Noise</button>
-            <button id="yogaMusicBtn" class="px-2 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 m-1" onclick="selectMeditationSound('./yoga.mp3')">Relaxing Yoga Music</button>
-            <button id="lofiBtn" class="px-2 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 m-1" onclick="selectMeditationSound('./lofi.mp3')">Lo-fi</button>
+            <button id="whiteNoiseBtn" class="px-2 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 m-1" onclick="selectMeditationSound('../static/white.mp3')">White Noise</button>
+            <button id="yogaMusicBtn" class="px-2 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 m-1" onclick="selectMeditationSound('../static/yoga.mp3')">Relaxing Yoga Music</button>
+            <button id="lofiBtn" class="px-2 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 m-1" onclick="selectMeditationSound('../static/lofi.mp3')">Lo-fi</button>
         </div>
       </div>
 
@@ -47,7 +47,7 @@
 
   <!-- Audio element for meditation sounds -->
   <audio id="whiteNoise" preload="auto" loop>
-    <source src="./lofi.mp3" type="audio/mpeg">
+    <source src="../static/lofi.mp3" type="audio/mpeg">
   </audio>
 
   <script>
@@ -152,11 +152,11 @@
       yogaMusicBtn.classList.remove('bg-yellow-700');
       lofiBtn.classList.remove('bg-yellow-700');
 
-      if (soundPath === './white.mp3') {
+      if (soundPath === '../static/white.mp3') {
         whiteNoiseBtn.classList.add('bg-yellow-700');
-      } else if (soundPath === './yoga.mp3') {
+      } else if (soundPath === '../static/yoga.mp3') {
         yogaMusicBtn.classList.add('bg-yellow-700');
-      } else if (soundPath === './lofi.mp3') {
+      } else if (soundPath === '../static/lofi.mp3') {
         lofiBtn.classList.add('bg-yellow-700');
       }
     }
