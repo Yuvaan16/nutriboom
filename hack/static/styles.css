@@ -1,9 +1,9 @@
 :root {
-    --raisin-black: #201e1fff;
-    --snow: #f8f2f4ff;
-    --celeste: #b2f1eaff;
-    --vista-blue: #87a7f3ff;
-    --thistle: #f4cff4ff;
+  #6FB895
+  #599377
+  #EC6C67
+  #010100
+  #C5E3D5
 }
 .grid-container {
     display: grid;
