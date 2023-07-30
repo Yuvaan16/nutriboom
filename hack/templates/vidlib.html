@@ -1,0 +1,393 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="container mx-auto p-6">
+        <h1 class="text-5xl font-bold mb-6 text-yellow-800" style="font-family: 'Boska', sans-serif;">Welcome to the Video Library</h1>
+        <div class="grid grid-cols-2 gap-7">
+            <!-- Card: Personal Growth -->
+            <div id="personalGrowthCard" class="block bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out delay-100 hover:translate-1 hover:scale-105 hover:bg-orange-50 duration-300 cursor-pointer border border-yellow-800">
+                <h2 class="text-xl font-bold mb-2">Personal Growth</h2>
+                <p>Explore videos to help you grow personally and professionally.</p>
+            </div>
+
+            <!-- Card: Yoga and Meditation -->
+            <div id="yogaMeditationCard" class="block bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out delay-100 hover:translate-1 hover:scale-105 hover:bg-orange-50 duration-300 cursor-pointer border border-yellow-800">
+                <h2 class="text-xl font-bold mb-2">Yoga and Meditation</h2>
+                <p>Discover videos on yoga and meditation to find peace and relaxation.</p>
+            </div>
+
+            <!-- Card: Healthy Cooking and Recipes -->
+            <div id="healthyCookingCard" class="block bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out delay-100 hover:translate-1 hover:scale-105 hover:bg-orange-50 duration-300 cursor-pointer border border-yellow-800">
+                <h2 class="text-xl font-bold mb-2">Healthy Cooking and Recipes</h2>
+                <p>Learn how to cook healthy and delicious recipes.</p>
+            </div>
+
+            <!-- Card: Fitness and Wellness -->
+            <div id="fitnessWellnessCard" class="block bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out delay-100 hover:translate-1 hover:scale-105 hover:bg-orange-50 duration-300 cursor-pointer border border-yellow-800">
+                <h2 class="text-xl font-bold mb-2">Fitness and Wellness</h2>
+                <p>Get fit and improve your overall wellness with these videos.</p>
+            </div>
+
+            <!-- Card: Self-Improvement and Motivation -->
+            <div id="selfImprovementCard" class="block bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out delay-100 hover:translate-1 hover:scale-105 hover:bg-orange-50 duration-300 cursor-pointer border border-yellow-800">
+                <h2 class="text-xl font-bold mb-2">Self-Improvement and Motivation</h2>
+                <p>Get motivated and work on improving yourself with these videos.</p>
+            </div>
+
+            <!-- Card: Spirituality and Self-Discovery -->
+            <div id="spiritualityDiscoveryCard" class="block bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out delay-100 hover:translate-1 hover:scale-105 hover:bg-orange-50 duration-300 cursor-pointer border border-yellow-800">
+                <h2 class="text-xl font-bold mb-2">Spirituality and Self-Discovery</h2>
+                <p>Embark on a journey of self-discovery and explore spirituality.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Personal Growth Videos -->
+    <div id="personalGrowthModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg p-8 w-3/4">
+            <h2 class="text-xl font-bold mb-4">Videos for Personal Growth</h2>
+            <div class="grid grid-cols-1 gap-4">
+                <!-- Video Link 1 -->
+                <a href="https://www.youtube.com/watch?v=ybQK_Lw7pWk&pp=ygUPcGVyc29uYWwgZ3Jvd3Ro" class="flex items-center p-2 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out delay-100 border border-yellow-800">
+                    <img src="https://i.ytimg.com/vi/ybQK_Lw7pWk/hq720.jpg" alt="Video Thumbnail" class="w-16 h-12 mr-4 rounded-lg flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold">Formula for Personal Growth ~ Daily Devotional</h3>
+                        <p class="text-sm">Living out the Word we've learned is how we—and our world—are changed.</p>
+                    </div>
+                </a>
+                <!-- Video Link 2 -->
+                <a href="https://www.youtube.com/watch?v=ybQK_Lw7pWk&pp=ygUPcGVyc29uYWwgZ3Jvd3Ro" class="flex items-center p-2 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out delay-100 border border-yellow-800">
+                    <img src="https://i.ytimg.com/vi/ybQK_Lw7pWk/hq720.jpg" alt="Video Thumbnail" class="w-16 h-12 mr-4 rounded-lg flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold">Formula for Personal Growth ~ Daily Devotional</h3>
+                        <p class="text-sm">Living out the Word we've learned is how we—and our world—are changed.</p>
+                    </div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=ybQK_Lw7pWk&pp=ygUPcGVyc29uYWwgZ3Jvd3Ro" class="flex items-center p-2 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out delay-100 border border-yellow-800">
+                    <img src="https://i.ytimg.com/vi/ybQK_Lw7pWk/hq720.jpg" alt="Video Thumbnail" class="w-16 h-12 mr-4 rounded-lg flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold">Formula for Personal Growth ~ Daily Devotional</h3>
+                        <p class="text-sm">Living out the Word we've learned is how we—and our world—are changed.</p>
+                    </div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=ybQK_Lw7pWk&pp=ygUPcGVyc29uYWwgZ3Jvd3Ro" class="flex items-center p-2 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out delay-100 border border-yellow-800">
+                    <img src="https://i.ytimg.com/vi/ybQK_Lw7pWk/hq720.jpg" alt="Video Thumbnail" class="w-16 h-12 mr-4 rounded-lg flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold">Formula for Personal Growth ~ Daily Devotional</h3>
+                        <p class="text-sm">Living out the Word we've learned is how we—and our world—are changed.</p>
+                    </div>
+                </a>
+            </div>
+            <button id="closePersonalGrowthModalBtn" class="mt-6 px-4 py-2 bg-red-500 text-white rounded">Close</button>
+        </div>
+    </div>
+
+    <!-- Modal: Yoga and Meditation Videos -->
+    <div id="yogaMeditationModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg p-8 w-3/4">
+            <h2 class="text-xl font-bold mb-4">Videos for Yoga and Meditation</h2>
+            <div class="grid grid-cols-1 gap-4">
+                <!-- Video Link A -->
+                <a href="https://www.youtube.com/watch?v=Vr3h5X9kmUo" class="flex items-center p-2 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out delay-100 border border-yellow-800">
+                    <img src="https://i.ytimg.com/vi/Vr3h5X9kmUo/hq720.jpg" alt="Video Thumbnail" class="w-16 h-12 mr-4 rounded-lg flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold">15 MIN MORNING YOGA FLOW || Wake Up & Feel Energised</h3>
+                        <p class="text-sm">Start your day right with this 15 Minute Morning Yoga Flow.</p>
+                    </div>
+                </a>
+                <!-- Video Link B -->
+                <a href="https://www.youtube.com/watch?v=Vr3h5X9kmUo" class="flex items-center p-2 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out delay-100 border border-yellow-800">
+                    <img src="https://i.ytimg.com/vi/Vr3h5X9kmUo/hq720.jpg" alt="Video Thumbnail" class="w-16 h-12 mr-4 rounded-lg flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold">15 MIN MORNING YOGA FLOW || Wake Up & Feel Energised</h3>
+                        <p class="text-sm">Start your day right with this 15 Minute Morning Yoga Flow.</p>
+                    </div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=Vr3h5X9kmUo" class="flex items-center p-2 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out delay-100 border border-yellow-800">
+                    <img src="https://i.ytimg.com/vi/Vr3h5X9kmUo/hq720.jpg" alt="Video Thumbnail" class="w-16 h-12 mr-4 rounded-lg flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold">15 MIN MORNING YOGA FLOW || Wake Up & Feel Energised</h3>
+                        <p class="text-sm">Start your day right with this 15 Minute Morning Yoga Flow.</p>
+                    </div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=Vr3h5X9kmUo" class="flex items-center p-2 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out delay-100 border border-yellow-800">
+                    <img src="https://i.ytimg.com/vi/Vr3h5X9kmUo/hq720.jpg" alt="Video Thumbnail" class="w-16 h-12 mr-4 rounded-lg flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold">15 MIN MORNING YOGA FLOW || Wake Up & Feel Energised</h3>
+                        <p class="text-sm">Start your day right with this 15 Minute Morning Yoga Flow.</p>
+                    </div>
+                </a>
+            </div>
+            <button id="closeYogaMeditationModalBtn" class="mt-6 px-4 py-2 bg-red-500 text-white rounded">Close</button>
+        </div>
+    </div>
+
+    <div id="healthyCookingModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg p-8 w-3/4">
+            <h2 class="text-xl font-bold mb-4">Videos for Healthy Cooking and Recipes</h2>
+            <div class="grid grid-cols-1 gap-4">
+                <!-- Video Link 1 -->
+                <a href="#" class="flex items-center p-2 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out delay-100 border border-yellow-800">
+                    <img src="https://i.ytimg.com/vi/ybQK_Lw7pWk/hq720.jpg" alt="Video Thumbnail" class="w-16 h-12 mr-4 rounded-lg flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold">Video Title 1</h3>
+                        <p class="text-sm">Video Description 1</p>
+                    </div>
+                </a>
+                <!-- Video Link 2 -->
+                <a href="#" class="flex items-center p-2 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out delay-100 border border-yellow-800">
+                    <img src="https://i.ytimg.com/vi/ybQK_Lw7pWk/hq720.jpg" alt="Video Thumbnail" class="w-16 h-12 mr-4 rounded-lg flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold">Video Title 2</h3>
+                        <p class="text-sm">Video Description 2</p>
+                    </div>
+                </a>
+                <a href="#" class="flex items-center p-2 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out delay-100 border border-yellow-800">
+                    <img src="https://i.ytimg.com/vi/ybQK_Lw7pWk/hq720.jpg" alt="Video Thumbnail" class="w-16 h-12 mr-4 rounded-lg flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold">Video Title 1</h3>
+                        <p class="text-sm">Video Description 1</p>
+                    </div>
+                </a>
+                <a href="#" class="flex items-center p-2 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out delay-100 border border-yellow-800">
+                    <img src="https://i.ytimg.com/vi/ybQK_Lw7pWk/hq720.jpg" alt="Video Thumbnail" class="w-16 h-12 mr-4 rounded-lg flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold">Video Title 2</h3>
+                        <p class="text-sm">Video Description 2</p>
+                    </div>
+                </a>
+            </div>
+            <button id="closehealthyCookingModalBtn" class="mt-6 px-4 py-2 bg-red-500 text-white rounded">Close</button>
+        </div>
+    </div>
+
+    <div id="fitnessWellnessModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg p-8 w-3/4">
+            <h2 class="text-xl font-bold mb-4">Videos for Fitness and Wellness</h2>
+            <div class="grid grid-cols-1 gap-4">
+                <a href="#" class="flex items-center p-2 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out delay-100 border border-yellow-800">
+                    <img src="https://i.ytimg.com/vi/ybQK_Lw7pWk/hq720.jpg" alt="Video Thumbnail" class="w-16 h-12 mr-4 rounded-lg flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold">Video Title 1</h3>
+                        <p class="text-sm">Video Description 1</p>
+                    </div>
+                </a>
+                <a href="#" class="flex items-center p-2 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out delay-100 border border-yellow-800">
+                    <img src="https://i.ytimg.com/vi/ybQK_Lw7pWk/hq720.jpg" alt="Video Thumbnail" class="w-16 h-12 mr-4 rounded-lg flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold">Video Title 2</h3>
+                        <p class="text-sm">Video Description 2</p>
+                    </div>
+                </a>
+                <a href="#" class="flex items-center p-2 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out delay-100 border border-yellow-800">
+                    <img src="https://i.ytimg.com/vi/ybQK_Lw7pWk/hq720.jpg" alt="Video Thumbnail" class="w-16 h-12 mr-4 rounded-lg flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold">Video Title 1</h3>
+                        <p class="text-sm">Video Description 1</p>
+                    </div>
+                </a>
+                <a href="#" class="flex items-center p-2 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out delay-100 border border-yellow-800">
+                    <img src="https://i.ytimg.com/vi/ybQK_Lw7pWk/hq720.jpg" alt="Video Thumbnail" class="w-16 h-12 mr-4 rounded-lg flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold">Video Title 2</h3>
+                        <p class="text-sm">Video Description 2</p>
+                    </div>
+                </a>
+            </div>
+            <button id="closefitnessWellnessModalBtn" class="mt-6 px-4 py-2 bg-red-500 text-white rounded">Close</button>
+        </div>
+    </div>
+
+    <div id="selfImprovementModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg p-8 w-3/4">
+            <h2 class="text-xl font-bold mb-4">Videos for Self-Improvement and Motivation</h2>
+            <div class="grid grid-cols-1 gap-4">
+                <!-- Video Link 1 -->
+                <a href="#" class="flex items-center p-2 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out delay-100 border border-yellow-800">
+                    <img src="https://i.ytimg.com/vi/0foQiAJ3uHg/hq720.jpg" alt="Video Thumbnail" class="w-16 h-12 mr-4 rounded-lg flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold">Video Title 1</h3>
+                        <p class="text-sm">Video Description 1</p>
+                    </div>
+                </a>
+                <!-- Video Link 2 -->
+                <a href="#" class="flex items-center p-2 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out delay-100 border border-yellow-800">
+                    <img src="https://i.ytimg.com/vi/0foQiAJ3uHg/hq720.jpg" alt="Video Thumbnail" class="w-16 h-12 mr-4 rounded-lg flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold">Video Title 2</h3>
+                        <p class="text-sm">Video Description 2</p>
+                    </div>
+                </a>
+                <a href="#" class="flex items-center p-2 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out delay-100 border border-yellow-800">
+                    <img src="https://i.ytimg.com/vi/0foQiAJ3uHg/hq720.jpg" alt="Video Thumbnail" class="w-16 h-12 mr-4 rounded-lg flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold">Video Title 1</h3>
+                        <p class="text-sm">Video Description 1</p>
+                    </div>
+                </a>
+                <a href="#" class="flex items-center p-2 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out delay-100 border border-yellow-800">
+                    <img src="https://i.ytimg.com/vi/0foQiAJ3uHg/hq720.jpg" alt="Video Thumbnail" class="w-16 h-12 mr-4 rounded-lg flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold">Video Title 2</h3>
+                        <p class="text-sm">Video Description 2</p>
+                    </div>
+                </a>
+            </div>
+            <button id="closeselfImprovementModalBtn" class="mt-6 px-4 py-2 bg-red-500 text-white rounded">Close</button>
+        </div>
+    </div>
+
+    <div id="spiritualityDiscoveryModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg p-8 w-3/4">
+            <h2 class="text-xl font-bold mb-4">Videos for Spirituality and Self-Discovery</h2>
+            <div class="grid grid-cols-1 gap-4">
+                <!-- Video Link 1 -->
+                <a href="#" class="flex items-center p-2 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out delay-100 border border-yellow-800">
+                    <img src="https://i.ytimg.com/vi/ybQK_Lw7pWk/hq720.jpg" alt="Video Thumbnail" class="w-16 h-12 mr-4 rounded-lg flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold">Video Title 1</h3>
+                        <p class="text-sm">Video Description 1</p>
+                    </div>
+                </a>
+                <!-- Video Link 2 -->
+                <a href="#" class="flex items-center p-2 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out delay-100 border border-yellow-800">
+                    <img src="https://i.ytimg.com/vi/ybQK_Lw7pWk/hq720.jpg" alt="Video Thumbnail" class="w-16 h-12 mr-4 rounded-lg flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold">Video Title 2</h3>
+                        <p class="text-sm">Video Description 2</p>
+                    </div>
+                </a>
+                <a href="#" class="flex items-center p-2 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out delay-100 border border-yellow-800">
+                    <img src="https://i.ytimg.com/vi/ybQK_Lw7pWk/hq720.jpg" alt="Video Thumbnail" class="w-16 h-12 mr-4 rounded-lg flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold">Video Title 1</h3>
+                        <p class="text-sm">Video Description 1</p>
+                    </div>
+                </a>
+                <a href="#" class="flex items-center p-2 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out delay-100 border border-yellow-800">
+                    <img src="https://i.ytimg.com/vi/ybQK_Lw7pWk/hq720.jpg" alt="Video Thumbnail" class="w-16 h-12 mr-4 rounded-lg flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold">Video Title 2</h3>
+                        <p class="text-sm">Video Description 2</p>
+                    </div>
+                </a>
+            </div>
+            <button id="closespiritualityDiscoveryModalBtn" class="mt-6 px-4 py-2 bg-red-500 text-white rounded">Close</button>
+        </div>
+    </div>
+    <!-- Add more modals for other categories as needed -->
+
+    <script>
+        // JavaScript to handle modal functionality for Personal Growth Videos
+        const personalGrowthCard = document.getElementById("personalGrowthCard");
+        const personalGrowthModal = document.getElementById("personalGrowthModal");
+        const closePersonalGrowthModalBtn = document.getElementById("closePersonalGrowthModalBtn");
+
+        personalGrowthCard.addEventListener("click", () => {
+            personalGrowthModal.classList.remove("hidden");
+        });
+
+        closePersonalGrowthModalBtn.addEventListener("click", () => {
+            personalGrowthModal.classList.add("hidden");
+        });
+
+        personalGrowthModal.addEventListener("click", (event) => {
+            if (event.target === personalGrowthModal) {
+                personalGrowthModal.classList.add("hidden");
+            }
+        });
+
+        // JavaScript to handle modal functionality for Yoga and Meditation Videos
+        const yogaMeditationCard = document.getElementById("yogaMeditationCard");
+        const yogaMeditationModal = document.getElementById("yogaMeditationModal");
+        const closeYogaMeditationModalBtn = document.getElementById("closeYogaMeditationModalBtn");
+
+        yogaMeditationCard.addEventListener("click", () => {
+            yogaMeditationModal.classList.remove("hidden");
+        });
+
+        closeYogaMeditationModalBtn.addEventListener("click", () => {
+            yogaMeditationModal.classList.add("hidden");
+        });
+
+        yogaMeditationModal.addEventListener("click", (event) => {
+            if (event.target === yogaMeditationModal) {
+                yogaMeditationModal.classList.add("hidden");
+            }
+        });
+
+        const healthyCookingCard = document.getElementById("healthyCookingCard");
+        const healthyCookingModal = document.getElementById("healthyCookingModal");
+        const closehealthyCookingModalBtn = document.getElementById("closehealthyCookingModalBtn");
+
+        healthyCookingCard.addEventListener("click", () => {
+            healthyCookingModal.classList.remove("hidden");
+        });
+
+        closehealthyCookingModalBtn.addEventListener("click", () => {
+            healthyCookingModal.classList.add("hidden");
+        });
+
+        healthyCookingModal.addEventListener("click", (event) => {
+            if (event.target === healthyCookingModal) {
+                healthyCookingModal.classList.add("hidden");
+            }
+        });
+        
+        const fitnessWellnessCard = document.getElementById("fitnessWellnessCard");
+        const fitnessWellnessModal = document.getElementById("fitnessWellnessModal");
+        const closefitnessWellnessModalBtn = document.getElementById("closefitnessWellnessModalBtn");
+
+        fitnessWellnessCard.addEventListener("click", () => {
+            fitnessWellnessModal.classList.remove("hidden");
+        });
+
+        closefitnessWellnessModalBtn.addEventListener("click", () => {
+            fitnessWellnessModal.classList.add("hidden");
+        });
+
+        fitnessWellnessModal.addEventListener("click", (event) => {
+            if (event.target === fitnessWellnessModal) {
+                fitnessWellnessModal.classList.add("hidden");
+            }
+        });
+
+        const selfImprovementCard = document.getElementById("selfImprovementCard");
+        const selfImprovementModal = document.getElementById("selfImprovementModal");
+        const closeselfImprovementModalBtn = document.getElementById("closeselfImprovementModalBtn");
+
+        selfImprovementCard.addEventListener("click", () => {
+            selfImprovementModal.classList.remove("hidden");
+        });
+
+        closeselfImprovementModalBtn.addEventListener("click", () => {
+            selfImprovementModal.classList.add("hidden");
+        });
+
+        selfImprovementModal.addEventListener("click", (event) => {
+            if (event.target === selfImprovementModal) {
+                selfImprovementModal.classList.add("hidden");
+            }
+        });
+
+        const spiritualityDiscoveryCard = document.getElementById("spiritualityDiscoveryCard");
+        const spiritualityDiscoveryModal = document.getElementById("spiritualityDiscoveryModal");
+        const closespiritualityDiscoveryModalBtn = document.getElementById("closespiritualityDiscoveryModalBtn");
+
+        spiritualityDiscoveryCard.addEventListener("click", () => {
+            spiritualityDiscoveryModal.classList.remove("hidden");
+        });
+
+        closespiritualityDiscoveryModalBtn.addEventListener("click", () => {
+            spiritualityDiscoveryModal.classList.add("hidden");
+        });
+
+        spiritualityDiscoveryModal.addEventListener("click", (event) => {
+            if (event.target === spiritualityDiscoveryModal) {
+                spiritualityDiscoveryModal.classList.add("hidden");
+            }
+        });
+
+    </script>
+    
+{% endblock content %}
