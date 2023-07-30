@@ -37,15 +37,15 @@
                 <div class="h-[21vh] flex flex-cols  gap-10 ">
                     <div class="w-1/2  h-[40vwh] bg-yellow-600 rounded-3xl px-10 text-white drop-shadow-2xl">
                         <h1 class="text-2xl mt-5 mb-2"> Your Progress </h1>
-                        <div class="max-w-md mx-auto bg-white rounded p-6 shadow-md">
-                                    <h1 class="text-2xl font-bold mb-4">Progress Tracker</h1>
-                                    <div class="progress-bar">
+                        <div class="max-w-md mx-auto rounded shadow-md">
+                                    
+                                    <div class="progress-bar mb-5">
                                       <div id="progress" class="progress w-[{{percent}}%]" ></div>
                                     </div>
 
                                   </div>
 
-                        <span class=" ">{{percent}}% Tasks Completed 🥳</span>
+                        <span class="mt-5">{{percent}}% Tasks Completed 🥳</span>
                     </div>
                     <div
                         class="w-1/2 bg-yellow-600 drop-shadow-2xl rounded-3xl px-10 text-white gap-5 flex flex-cols justify-center items-center">
@@ -113,10 +113,10 @@
         </div>
         </div>
         <Div class="h-[26vh] rounded-3xl w-[30vw] bg-yellow-800 -mt-40">
-        <h1 class="text-xl text-center mt-2  text-white">Check the tasks you did today</h1>
-        <div class="max-w-md mx-auto bg-white rounded p-6 shadow-md">
-            <h1 class="text-2xl font-bold mb-4">Task List</h1>
-            <ul id="taskList" class="list-disc pl-6">
+        <h1 class="text-xl text-center mt-2  text-white font-bold">Check the tasks you did today</h1>
+        <div class="max-w-md mx-auto rounded text-white p-2 ">
+           
+            <ul id="taskList" class="list-disc pl-10 mt-2">
               {%if current_user.journal != d%}
               <a href="{{url_for('done', what='journal',which=0)}}"><li class="mb-2 cursor-pointer">Wrote Journal</li></a>
               {%else%}
