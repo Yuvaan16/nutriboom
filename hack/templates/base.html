@@ -26,14 +26,28 @@
 					</a>
 					<ul class="items-stretch hidden space-x-3 lg:flex">
 						<li class="flex">
-							<a rel="noopener noreferrer" href="{{url_for('epsilon')}}"
-								class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Dashboard</a>
+
 						</li>
 						{%if not current_user.is_authenticated%}
 						<li class="flex">
 							<a rel="noopener noreferrer" href="{{url_for('register')}}"
 								class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Register</a>
+
 						</li>
+						{%else%}
+						<a rel="noopener noreferrer" href="{{url_for('explore')}}"
+							class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Buy</a>
+							{%if current_user.premium==0%}
+							<a rel="noopener noreferrer" href="{{url_for('get_premium')}}"
+								class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Premium</a>
+								<a rel="noopener noreferrer" href="{{url_for('survey')}}"
+									class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Demo Premium</a>
+							{%endif%}
+						{%endif%}
+
+						{%if current_user.premium==1%}
+						<a rel="noopener noreferrer" href="{{url_for('epsilon')}}"
+							class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Dashboard</a>
 						{%endif%}
 					</ul>
 				</div>

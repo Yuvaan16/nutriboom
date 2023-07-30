@@ -278,6 +278,6 @@ def done(what,which):
 def prem():
     current_user.premium=1
     db.session.commit()
-    return redirect(url_for("home"))
+    return redirect(url_for("thank_you"))
 if __name__ == '__main__':
     app.run(debug=True)
