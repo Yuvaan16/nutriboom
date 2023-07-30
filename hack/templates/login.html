@@ -2,27 +2,28 @@
 {% block content %}
 
 
-<div class="h-screen w-screen flex flex-cols justify-center items-center ">
-    <div class="w-2/3 flex flex-cols px-20 justify-center items-center h-screen -mt-32">
-      <div class="grid">
-        <h1 class="text-4xl font-light">Sign in or create an account</h1>
+<div class="flex flex-col items-center justify-center min-h-[70vh]">
+    <div class="w-full max-w-md">
+      <div class="bg-[#cdb891] rounded-lg shadow-lg px-8 py-6">
+        <h1 class="text-2xl mb-6 text-center">Sign in</h1>
         <form method="POST" class="mt-10" onsubmit="return validateForm()">
           {{ form.hidden_tag() }}
           <label for="email">Email Address</label>
-          {{ form.email(class='p-5 text-xl w-full h-12 border-2 mt-2 border-black', placeholder='user@example.com') }}
+          {{ form.email(class='w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-[#a18167] focus:border-2 border-2 border-transparent transition-all 2s', placeholder='user@example.com') }}
           {% if form.email.errors %}
             {% for error in form.email.errors %}
-              <small class="error">{{ error }}</small><br>
+              <small class="error">{{ error }}</small>
             {% endfor %}
           {% endif %}
-          <label for="password">Password</label>
-          {{ form.password(class='p-5 text-xl w-full h-12 border-2 mt-2 border-black', placeholder='••••••') }}
+          <br>
+          <label for="password" class="mt-2">Password</label>
+          {{ form.password(class='w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-[#a18167] focus:border-2 border-2 border-transparent focus:transition-all 2sp-5 text-xl w-full h-12 border-2 mt-2 border-black', placeholder='••••••') }}
           {% if form.password.errors %}
             {% for error in form.password.errors %}
-              <small class="error">{{ error }}</small><br>
+              <small class="error">{{ error }}</small>
             {% endfor %}
           {% endif %}
-          {{ form.submit(class="w-full h-12 bg-black text-white mt-5") }}
+          {{ form.submit(class="w-full bg-[#a18167] text-white text-lg font-semibold py-2 rounded-md mt-4") }}
         </form>
       </div>
     </div>
