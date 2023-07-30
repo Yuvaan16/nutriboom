@@ -253,7 +253,7 @@ def journal():
 @login_required
 def single(id):
     journal = Journal.query.get(id)
-    if journal.id != current_user.id:
+    if journal.user_id != current_user.id:
         abort(403)
     return render_template('journal_single.html' ,journal=journal)
 
