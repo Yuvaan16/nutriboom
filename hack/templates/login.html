@@ -2,37 +2,56 @@
 {% block content %}
 
 
-  <div class="h-screen w-screen flex flex-cols justify-center items-center ">
-
+<div class="h-screen w-screen flex flex-cols justify-center items-center ">
     <div class="w-2/3 flex flex-cols px-20 justify-center items-center h-screen -mt-32">
-        <div class="grid">
-
-            <h1 class="text-4xl font-light">Sign in or create an account</h1>
-            <form method="POST" class="mt-10">
-                {{form.hidden_tag()}}
-                <label for="email">Email Address</label>
-
-                {{form.email(class='p-5 text-xl w-full h-12 border-2 mt-2 border-black', placeholder='user@example.com')}}
-
-                {%if form.email.errors%}
-                {%for error in form.email.errors%}
-
-                <small class="error">{{error}}</small>
-
-                {%endfor%} {%endif%}
-                <label for="email">Password</label>
-                 {{form.password(class='p-5 text-xl w-full h-12 border-2 mt-2 border-black', placeholder='••••••')}}
-
-                 {%if form.password.errors%}
-                 {%for error in form.password.errors%}
-                 <small class="error">{{error}}</small>
-
-                 {%endfor%} {%endif%}
-                 {{form.submit(class ="w-full h-12 bg-black text-white mt-5")}}
-
-            </form>
-
-        </div>
+      <div class="grid">
+        <h1 class="text-4xl font-light">Sign in or create an account</h1>
+        <form method="POST" class="mt-10" onsubmit="return validateForm()">
+          {{ form.hidden_tag() }}
+          <label for="email">Email Address</label>
+          {{ form.email(class='p-5 text-xl w-full h-12 border-2 mt-2 border-black', placeholder='user@example.com') }}
+          {% if form.email.errors %}
+            {% for error in form.email.errors %}
+              <small class="error">{{ error }}</small>
+            {% endfor %}
+          {% endif %}
+          <label for="password">Password</label>
+          {{ form.password(class='p-5 text-xl w-full h-12 border-2 mt-2 border-black', placeholder='••••••') }}
+          {% if form.password.errors %}
+            {% for error in form.password.errors %}
+              <small class="error">{{ error }}</small>
+            {% endfor %}
+          {% endif %}
+          {{ form.submit(class="w-full h-12 bg-black text-white mt-5") }}
+        </form>
+      </div>
     </div>
-</div>
+  </div>
+
+  <script>
+    function showErrorModal(message) {
+      const errorModal = document.getElementById("errorModal");
+      const modalContent = errorModal.querySelector(".bg-yellow-800");
+      modalContent.innerText = message;
+      errorModal.classList.remove("hidden");
+      setTimeout(() => {
+        errorModal.classList.add("hidden");
+      }, 500); // Hide the modal after 7 seconds
+      return false; // Prevent form submission
+    }
+
+    function validateForm() {
+      const emailInput = document.getElementById("email");
+      const emailValue = emailInput.value;
+      // Add your own email validation logic here
+      // For simplicity, let's check if the email contains '@'
+      if (!emailValue.includes('@')) {
+        showErrorModal("Invalid email format!");
+        return false; // Prevent form submission
+      }
+      // Add other form validation checks here if needed
+      return true; // Allow form submission
+    }
+  </script>
+
 {% endblock content %}

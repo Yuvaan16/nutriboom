@@ -11,13 +11,29 @@
             <p class="mt-6 mb-8 text-lg sm:mb-12">Dictum aliquam porta in condimentum ac integer
                 <br class="hidden md:inline lg:hidden">turpis pulvinar, est scelerisque ligula sem
             </p>
-            <div
+            {%if not current_user.is_authenticated%} <div
                 class="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
-                <a rel="noopener noreferrer" href="#"
+                <a rel="noopener noreferrer" href="/reg"
                     class="px-8 py-3 text-lg font-semibold rounded bg-yellow-600 text-gray-50 rounded-r-full rounded-bl-full">Try
                     Now</a>
 
-            </div>
+            </div>{%endif%}
+            {%if not current_user.is_authenticated%} <div
+            class="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
+            
+        </div>{%endif%}
+
+        {%if current_user.is_authenticated%}
+
+        <div
+        class="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
+        <a rel="noopener noreferrer" href="/login"
+            class="px-8 py-3 text-lg font-semibold rounded bg-yellow-600 text-gray-50 rounded-r-full rounded-bl-full">Try
+            Now</a>
+
+    </div>
+				
+				{%endif%}
         </div>
         <div class="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
             <img src="{{url_for('static', filename='hero.png')}}" alt="" class=" object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
