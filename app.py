@@ -161,7 +161,7 @@ def thank_you():
 @app.route('/epsilon', methods=['GET', 'POST'])
 @login_required
 def epsilon():
-    if current_user.premium == 0:
+    if current_user.premium != 0:
         return render_template('epsilon_new.html')
     else:
         abort(403)
