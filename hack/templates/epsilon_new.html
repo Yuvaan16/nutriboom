@@ -1,5 +1,28 @@
 {% extends 'base.html' %}
+{%block head%}
+<style>
+            /* Custom styles for the progress tracker */
+            .progress-bar {
+              width: 100%;
+              background-color: #f3f3f3;
+              border-radius: 4px;
+              overflow: hidden;
+            }
+
+            .progress {
+              width: 0;
+              background-color: #4CAF50;
+              height: 30px;
+              transition: width 0.3s ease;
+            }
+
+            .btn {
+              margin-top: 10px;
+            }
+          </style>
+{%endblock%}
 {% block content %}
+
 <div class="flex flex-cols ">
     <div class="w-2/3">
         <div class="h-[30vh]  px-20 relative">
@@ -14,11 +37,15 @@
                 <div class="h-[21vh] flex flex-cols  gap-10 ">
                     <div class="w-1/2  h-[40vwh] bg-yellow-600 rounded-3xl px-10 text-white drop-shadow-2xl">
                         <h1 class="text-2xl mt-5 mb-2"> Your Progress </h1>
-                        <div class="h-3 w-full bg-white rounded-full mb-2">
+                        <div class="max-w-md mx-auto bg-white rounded p-6 shadow-md">
+                                    <h1 class="text-2xl font-bold mb-4">Progress Tracker</h1>
+                                    <div class="progress-bar">
+                                      <div id="progress" class="progress w-[{{percent}}%]" ></div>
+                                    </div>
 
+                                  </div>
 
-                        </div>
-                        <span class=" ">69% Tasks Completed 🥳</span>
+                        <span class=" ">{{percent}}% Tasks Completed 🥳</span>
                     </div>
                     <div
                         class="w-1/2 bg-yellow-600 drop-shadow-2xl rounded-3xl px-10 text-white gap-5 flex flex-cols justify-center items-center">
@@ -87,24 +114,35 @@
         </div>
         <Div class="h-[26vh] rounded-3xl w-[30vw] bg-yellow-800 -mt-40">
         <h1 class="text-xl text-center mt-2  text-white">Check the tasks you did today</h1>
-        <div class="flex flex-cols justify-center items-center">
-            <div class="grid grid-cols-2 grid-rows-2 gap-5 mt-5">
-                <button class="h-12 w-32 focus:bg-yellow-600 bg-white rounded-3xl flex flex-cols justify-center items-center">
-                    <h1 class="text-xl text-center font-bold ">Feature<br></h1>
-                </button>
+        <div class="max-w-md mx-auto bg-white rounded p-6 shadow-md">
+            <h1 class="text-2xl font-bold mb-4">Task List</h1>
+            <ul id="taskList" class="list-disc pl-6">
+              {%if current_user.journal != d%}
+              <a href="{{url_for('done', what='journal',which=0)}}"><li class="mb-2 cursor-pointer">Wrote Journal</li></a>
+              {%else%}
+              <a href="{{url_for('done', what='journal',which=1)}}"><li class="mb-2 cursor-pointer line-through">Wrote Journal</li></a>
+              {%endif%}
 
-                <button class="h-12 w-32 focus:bg-yellow-600 bg-white rounded-3xl flex flex-cols justify-center items-center">
-                    <h1 class="text-xl text-center font-bold ">Feature<br></h1>
-                </button>
-                <button class="h-12 w-32 focus:bg-yellow-600 bg-white rounded-3xl flex flex-cols justify-center items-center">
-                    <h1 class="text-xl text-center font-bold ">Feature<br></h1>
-                </button>
-                <button class="h-12 w-32 focus:bg-yellow-600 bg-white rounded-3xl flex flex-cols justify-center items-center">
-                    <h1 class="text-xl text-center font-bold ">Feature<br></h1>
-                </button>
-         
-        </div>
-    </div></div></Div>
+              {%if current_user.meditate != d%}
+              <a href="{{url_for('done', what='meditate',which=0)}}"><li class="mb-2 cursor-pointer">Meditated for today</li></a>
+              {%else%}
+              <a href="{{url_for('done', what='meditate',which=1)}}"><li class="mb-2 cursor-pointer line-through">Meditated for today</li></a>
+              {%endif%}
+              {%if current_user.video != d%}
+              <a href="{{url_for('done', what='video',which=0)}}"><li class="mb-2 cursor-pointer">Watched today's videos</li></a>
+              {%else%}
+              <a href="{{url_for('done', what='video',which=1)}}"><li class="mb-2 cursor-pointer line-through">Watched today's videos</li></a>
+              {%endif%}
+              {%if current_user.pill != d%}
+              <a href="{{url_for('done', what='pill',which=0)}}"><li class="mb-2 cursor-pointer">Ate all supplements</li></a>
+              {%else%}
+              <a href="{{url_for('done', what='pill',which=1)}}"><li class="mb-2 cursor-pointer line-through">Ate all supplements</li></a>
+              {%endif%}
+
+            </ul>
+          </div>
+
+</div></Div>
 </div>
 </div>
 

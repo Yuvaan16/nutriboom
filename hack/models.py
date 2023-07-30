@@ -1,7 +1,8 @@
 from hack import db,login_manager
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
-from datetime import datetime, date
+from datetime import date
+import datetime
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -16,6 +17,11 @@ class User(db.Model,UserMixin):
     products = db.relationship('UserProduct', backref='user')
     premium = db.Column(db.Integer, default=0)
 
+    journal = db.Column(db.String, default=str(date.today()- datetime.timedelta(days=1)))
+    meditate = db.Column(db.String, default=str(date.today()- datetime.timedelta(days=1)))
+    video = db.Column(db.String, default=str(date.today()- datetime.timedelta(days=1)))
+    pill = db.Column(db.String, default=str(date.today()- datetime.timedelta(days=1)))
+
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
@@ -23,7 +29,7 @@ class User(db.Model,UserMixin):
         self.email = email
         self.username = username
         self.password = generate_password_hash(password)
-        
+
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)

@@ -7,8 +7,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import uuid as uuid
 import stripe
 from sqlalchemy import or_,desc,asc
-
-
+from datetime import date
+import datetime
 stripe.api_key = app.config['STRIPE_SECRET_KEY']
 
 create_db(app)
@@ -17,11 +17,11 @@ create_db(app)
 @app.route('/')
 def home():
     searchform = SearchForm()
-    product = Product(category="gummy",
-                    name="uv kee mummy",
-                    price=69696)
-    db.session.add(product)
-    db.session.commit()
+    # product = Product(category="gummy",
+    #                 name="uv kee mummy",
+    #                 price=69696)
+    # db.session.add(product)
+    # db.session.commit()
     return render_template('index.html', searchform=searchform)
 
 @app.route('/reg', methods=['GET', 'POST'])
@@ -166,15 +166,27 @@ def thank_you():
 @app.route('/epsilon', methods=['GET', 'POST'])
 @login_required
 def epsilon():
-    if current_user.premium == 0:
-        return render_template('epsilon_new.html')
+    if current_user.premium == 1:
+        d=date.today()
+        d=str(d)
+        sum=0
+        if current_user.journal==d:
+            sum+=1
+        if current_user.video==d:
+            sum+=1
+        if current_user.meditate==d:
+            sum+=1
+        if current_user.pill==d:
+            sum+=1
+        percent = sum*100/4
+        return render_template('epsilon_new.html',d=d,percent=percent)
     else:
         abort(403)
 
 @app.route('/vidlib', methods=['GET', 'POST'])
 @login_required
 def vidlib():
-    if current_user.premium == 0:
+    if current_user.premium == 1:
         return render_template('vidlib.html')
     else:
         abort(403)
@@ -182,7 +194,7 @@ def vidlib():
 @app.route('/survey', methods=['GET', 'POST'])
 @login_required
 def survey():
-    if current_user.premium == 0:
+    if current_user.premium == 1:
         return render_template('survey.html')
     else:
         abort(403)
@@ -190,7 +202,7 @@ def survey():
 @app.route('/timer', methods=['GET', 'POST'])
 @login_required
 def timer():
-    if current_user.premium != 0:
+    if current_user.premium != 1:
         return render_template('timer.html')
     else:
         abort(403)
@@ -244,5 +256,28 @@ def single(id):
     if journal.id != current_user.id:
         abort(403)
     return render_template('journal_single.html' ,journal=journal)
+
+@app.route('/done/<what>/<which>', methods=['GET','POST'])
+@login_required
+def done(what,which):
+    d=date.today()-datetime.timedelta(days=int(which))
+    d=str(d)
+    if what=='journal':
+        current_user.journal=d
+    if what=='meditate':
+        current_user.meditate=d
+    if what=='video':
+        current_user.video=d
+    if what=='pill':
+        current_user.pill=d
+    db.session.commit()
+    return redirect(url_for("epsilon"))
+
+@app.route('/demopremium', methods=['GET','POST'])
+@login_required
+def prem():
+    current_user.premium=1
+    db.session.commit()
+    return redirect(url_for("home"))
 if __name__ == '__main__':
     app.run(debug=True)
