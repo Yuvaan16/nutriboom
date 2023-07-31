@@ -7,42 +7,42 @@
         <div class="container text-lg mx-auto py-8">
         <div class="flex flex-wrap justify-center">
           <div class="flex space-x-4">
-            <div class="transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-orange-50 duration-300 px-4 py-2 bg-white rounded-full shadow-lg cursor-pointer border border-yellow-800">
+            <div class="option-btn transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-orange-50 duration-300 px-4 py-2 bg-white rounded-full shadow-lg cursor-pointer border border-yellow-800">
                 Stress
             </div>
-            <div class="transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-orange-50 duration-300 px-4 py-2 bg-white rounded-full shadow-lg cursor-pointer border border-yellow-800">
+            <div class="option-btn transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-orange-50 duration-300 px-4 py-2 bg-white rounded-full shadow-lg cursor-pointer border border-yellow-800">
                 High Blood Pressure
             </div>
-            <div class="transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-orange-50 duration-300 px-4 py-2 bg-white rounded-full shadow-lg cursor-pointer border border-yellow-800">
+            <div class="option-btn transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-orange-50 duration-300 px-4 py-2 bg-white rounded-full shadow-lg cursor-pointer border border-yellow-800">
                 Depression
             </div>
           </div>
         </div>
         <div class="flex flex-wrap justify-center">
           <div class="flex space-x-4 mt-4">
-            <div class="transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-orange-50 duration-300 px-4 py-2 bg-white rounded-full shadow-lg cursor-pointer border border-yellow-800">
+            <div class="option-btn transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-orange-50 duration-300 px-4 py-2 bg-white rounded-full shadow-lg cursor-pointer border border-yellow-800">
                 Chronic Pain
             </div>
-            <div class="transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-orange-50 duration-300 px-4 py-2 bg-white rounded-full shadow-lg cursor-pointer border border-yellow-800">
+            <div class="option-btn transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-orange-50 duration-300 px-4 py-2 bg-white rounded-full shadow-lg cursor-pointer border border-yellow-800">
                 Insomnia
             </div>
-            <div class="transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-orange-50 duration-300 px-4 py-2 bg-white rounded-full shadow-lg cursor-pointer border border-yellow-800">
+            <div class="option-btn transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-orange-50 duration-300 px-4 py-2 bg-white rounded-full shadow-lg cursor-pointer border border-yellow-800">
                 Lack of Focus
             </div>
-            <div class="transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-orange-50 duration-300 px-4 py-2 bg-white rounded-full shadow-lg cursor-pointer border border-yellow-800">
+            <div class="option-btn transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-orange-50 duration-300 px-4 py-2 bg-white rounded-full shadow-lg cursor-pointer border border-yellow-800">
                 Weight Management
             </div>
           </div>
         </div>
         <div class="flex flex-wrap justify-center">
           <div class="flex space-x-4 mt-4">
-            <div class="transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-orange-50 duration-300 px-4 py-2 bg-white rounded-full shadow-lg cursor-pointer border border-yellow-800">
+            <div class="option-btn transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-orange-50 duration-300 px-4 py-2 bg-white rounded-full shadow-lg cursor-pointer border border-yellow-800">
                 General Health
             </div>
-            <div class="transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-orange-50 duration-300 px-4 py-2 bg-white rounded-full shadow-lg cursor-pointer border border-yellow-800">
+            <div class="option-btn transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-orange-50 duration-300 px-4 py-2 bg-white rounded-full shadow-lg cursor-pointer border border-yellow-800">
                 Anger Management
             </div>
-            <div class="transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-orange-50 duration-300 px-4 py-2 bg-white rounded-full shadow-lg cursor-pointer border border-yellow-800">
+            <div class="option-btn transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 hover:bg-orange-50 duration-300 px-4 py-2 bg-white rounded-full shadow-lg cursor-pointer border border-yellow-800">
                 Loneliness
             </div>
           </div>
@@ -55,4 +55,14 @@
       </div>
     </div>
 
+    <script>  
+      const optionButtons = document.querySelectorAll('.option-btn');
+  
+      optionButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          button.classList.toggle('bg-yellow-600');
+          button.classList.toggle('text-white');
+        });
+      });
+    </script>
 {% endblock content %}
