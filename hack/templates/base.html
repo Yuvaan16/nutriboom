@@ -37,7 +37,7 @@
 
 						{% else %}
 						  <a rel="noopener noreferrer" href="{{url_for('explore')}}" class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Shop</a>
-							<a rel="noopener noreferrer" href="{{url_for('cart')}}" class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Cart/a>
+							<a rel="noopener noreferrer" href="{{url_for('cart')}}" class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Cart</a>
 						  {% if current_user.premium == 0 %}
 							<a rel="noopener noreferrer" href="{{url_for('get_premium')}}" class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Premium</a>
 							<a rel="noopener noreferrer" href="{{url_for('survey')}}" class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Demo Premium</a>
