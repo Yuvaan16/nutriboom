@@ -23,14 +23,23 @@
                         </div>
                         <div>
                             <div class="inline-block align-bottom mr-5">
-                          
+
                                 <span class="font-bold text-5xl leading-none align-baseline">₹{{prod.price}}</span>
-                               
+
                             </div>
                             <div class="inline-block align-bottom">
+
+                                  {%if check%}
+                                  <a href="{{url_for('addtocart', id=prod.id)}}">
                                 <button
                                     class="px-10 py-2 font-semibold rounded-r-full rounded-bl-full hover:border-2 hover:border-yellow-600 hover:text-yellow-600 hover:bg-transparent bg-yellow-600 text-gray-50"><i
-                                        class="mdi mdi-cart -ml-2 mr-2"></i> BUY NOW</button>
+                                        class="mdi mdi-cart -ml-2 mr-2"></i>ADD TO CART</button></a>
+                                  {%else%}
+                                  <a href="{{url_for('cart')}}">
+                                <button
+                                    class="px-10 py-2 font-semibold rounded-r-full rounded-bl-full hover:text-red-700 bg-gray-700 text-gray-50"><i
+                                        class="mdi mdi-cart -ml-2 mr-2"></i>ADDED TO CART</button></a>
+                                  {%endif%}
                             </div>
                         </div>
                     </div>

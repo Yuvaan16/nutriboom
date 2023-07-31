@@ -92,7 +92,12 @@ def product(id):
     product = Product.query.filter_by(id=id).first()
     prods = Product.query.all()
     prods.remove(product)
-    return render_template('product.html', searchform=searchform, prod=product, prods=prods)
+    user_products = UserProduct.query.filter_by(user_id=current_user.id).all()
+    check=True
+    for i in user_products:
+        if i.product_id==product.id:
+            check=False
+    return render_template('product.html', searchform=searchform, prod=product, prods=prods, check=check)
 
 @app.route('/increase_qty/<user_id>/<prod_id>')
 @login_required

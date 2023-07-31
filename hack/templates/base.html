@@ -34,15 +34,16 @@
 					<div class="flex flex-cols justify-center items-center"><h1 class="font-bold text-xl text-yellow-800">NutriBoom</h1></div>
 					<ul class="items-stretch hidden space-x-3 lg:flex">
 						{% if not current_user.is_authenticated %}
-						  
+
 						{% else %}
 						  <a rel="noopener noreferrer" href="{{url_for('explore')}}" class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Shop</a>
+							<a rel="noopener noreferrer" href="{{url_for('cart')}}" class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Cart/a>
 						  {% if current_user.premium == 0 %}
 							<a rel="noopener noreferrer" href="{{url_for('get_premium')}}" class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Premium</a>
 							<a rel="noopener noreferrer" href="{{url_for('survey')}}" class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Demo Premium</a>
 						  {% endif %}
 						{% endif %}
-					  
+
 						{% if current_user.premium == 1 %}
 						  <a rel="noopener noreferrer" href="{{url_for('epsilon')}}" class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Dashboard</a>
 						{% endif %}
@@ -58,7 +59,7 @@
 					{%else%}
 			<div class="flex flex-cols  "><a href="{{url_for('register')}}"><div class="items-center flex-shrink-0 hidden lg:flex">
 				<button
-					class="px-10 py-2 mr-5 font-semibold rounded-l-full rounded-br-full  hover:border-2 hover:border-yellow-600 hover:text-yellow-600 hover:bg-transparent bg-yellow-600 text-gray-50">Register</button></a>	
+					class="px-10 py-2 mr-5 font-semibold rounded-l-full rounded-br-full  hover:border-2 hover:border-yellow-600 hover:text-yellow-600 hover:bg-transparent bg-yellow-600 text-gray-50">Register</button></a>
 					<a href="{{url_for('login')}}"><div class="items-center flex-shrink-0 hidden lg:flex">
 					<button
 						class="px-10 py-2 font-semibold rounded-r-full rounded-bl-full hover:border-2 hover:border-yellow-600 hover:text-yellow-600 hover:bg-transparent bg-yellow-600 text-gray-50">Log
