@@ -1,11 +1,28 @@
 
 {% extends 'base.html' %}
 {% block content %}
-<div class="min-h-screen flex items-center justify-center">
+<!-- <div class="min-h-screen flex items-center justify-center">
   <div class="mx-auto bg-yellow-600 rounded-3xl p-4 text-white shadow-md rounded p-4 w-4/5">
     <h1 class="font-bold mb-2">{{journal.date}}</h1>
     <h1 class="mb-2" style="word-wrap: break-word;">{{journal.text}}</h1>  
   </div>
 </div>
- 
+  -->
+
+
+  <div class="h-[80vh] w-screen p-10 flex flex-cols">
+    <Div class="w-3/4">
+    <div class="text-2xl text-yellow-800 font-bold">{{journal.date}}</div>
+    <div class="text-xl font-yellow-600 text-justify"  style="word-wrap: break-word;">{{journal.text}}</div>
+  </Div>
+  <Div class="w-1/4 ">
+    <Div class="flex flex-cols justify-center items-center">
+    <div class="grid">
+    <div class="flex flex-cols justify-center items-center">
+      <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80"
+          class="w-16 rounded-full  h-16"></div>
+    <h1 class="text-black text-2xl text-center mt-3">{{current_user.username}}</h1></Div>
+  </div>
+  </Div>
+  </div>
 {% endblock content %}
