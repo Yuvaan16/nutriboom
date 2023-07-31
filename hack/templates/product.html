@@ -1,68 +1,57 @@
-<meta charset="UTF-8">
-	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script src="https://cdn.tailwindcss.com"></script>
-	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-	<link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400&f[]=panchang@600&display=swap" rel="stylesheet">
+{% extends 'base.html' %}
 {% block content %}
-
-
-<body style="font-family: 'Satoshi', sans-serif;" class=" relative bg-[url('{{url_for('static', filename='default.png')}}')] bg-cover overflow-hidden">
-    <Div class="h-screen w-screen backdrop-brightness-50">
-    <header class="p-4 text-gray-800  bg-transparent">
-        <div class="container flex justify-between h-16 mx-auto">
-            <div class="flex">
-                <a rel="noopener noreferrer" href="/" aria-label="Back to homepage" class="flex items-center p-2">
-                    <img src="{{url_for('static', filename='logo.png')}}" class=w-16>
-                </a>
-                <ul class="items-stretch hidden space-x-3 lg:flex">
-                    <li class="flex">
-                        <a rel="noopener noreferrer" href="/epsilon"
-                            class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Link</a>
-                    </li>
-                    <li class="flex">
-                        <a rel="noopener noreferrer" href="#"
-                            class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Link</a>
-                    </li>
-                    <li class="flex">
-                        <a rel="noopener noreferrer" href="#"
-                            class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Link</a>
-                    </li>
-                    <li class="flex">
-                        <a rel="noopener noreferrer" href="#"
-                            class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Link</a>
-                    </li>
-                </ul>
+        <div class="min-w-screen min-h-screen bg-[#FFFAF7] flex items-center p-5 lg:p-10 overflow-hidden relative">
+            <div
+                class="w-full max-w-6xl rounded  p-10 lg:p-20 mx-auto text-gray-800 relative md:text-left">
+                <div class="md:flex items-center -mx-10">
+                    <div class="w-full md:w-1/2 px-10 mb-10 md:mb-0">
+                        <div class="relative">
+                           <Div class="flex flex-cols justify-center items-center"> <img src="{{url_for('static', filename='default.png')}}"
+                                class="  h-96 relative z-10" alt="">
+                            <div class="border-4 border-yellow-800 absolute top-10 bottom-10 left-10 right-10 z-0">
+                            </div></Div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 px-10">
+                        <div class="mb-10">
+                            <h1 class="font-bold uppercase text-2xl mb-5">{{prod.name}}</h1>
+                            <p class="text-sm">Lorem ipsum dolor sit, amet consectetur adipisicing, elit. Eos,
+                                voluptatum dolorum! Laborum blanditiis consequatur, voluptates, sint enim fugiat saepe,
+                                dolor fugit, magnam explicabo eaque quas id quo porro dolorum facilis... <a href="#"
+                                    class="opacity-50 text-gray-900 hover:opacity-100 inline-block text-xs leading-none border-b border-gray-900">MORE
+                                    <i class="mdi mdi-arrow-right"></i></a></p>
+                        </div>
+                        <div>
+                            <div class="inline-block align-bottom mr-5">
+                          
+                                <span class="font-bold text-5xl leading-none align-baseline">₹{{prod.price}}</span>
+                               
+                            </div>
+                            <div class="inline-block align-bottom">
+                                <button
+                                    class="px-10 py-2 font-semibold rounded-r-full rounded-bl-full hover:border-2 hover:border-yellow-600 hover:text-yellow-600 hover:bg-transparent bg-yellow-600 text-gray-50"><i
+                                        class="mdi mdi-cart -ml-2 mr-2"></i> BUY NOW</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <a href="/login">
-                <div class="items-center flex-shrink-0 hidden lg:flex">
-                    <button
-                    class="px-10 py-2 mr-5 font-semibold rounded-r-full rounded-bl-full mt-5  hover:border-2 hover:border-yellow-600 hover:text-yellow-600 hover:bg-transparent bg-yellow-600 text-gray-50">Log in</button>
-            </a>
         </div>
-        <button class="p-4 lg:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                class="w-6 h-6 text-gray-800">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
-                </path>
-            </svg>
-        </button>
-        </div>
-    </header>
-<div class=" py-20 h-[100vh] w-full absolute">
-<div class="h-[60vh] rounded-3xl ml-32 w-[50vh] bg-yellow-800 p-5">
-    <div class="text-yellow-600 font-bold text-2xl">{{prod.name}}</div>
-    <div class="mt-2"><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon></div>
-    <Div class="text-gray-100 mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sed, possimus amet autem adipisci rem suscipit ipsam saepe quasi excepturi, accusantium aperiam. A ex quod eveniet voluptate, voluptas asperiores quis.</Div>
-    <div class="text-6xl font-bold text-yellow-600  mt-10">₹{{prod.price}}</div>
-    <a href="/addtocart/{{prod.id}}">   <button
-        class="px-10 py-2 mr-5 font-semibold rounded-r-full rounded-bl-full mt-5  hover:border-2 hover:border-yellow-600 hover:text-yellow-600 hover:bg-transparent bg-yellow-600 text-gray-50">Add to cart</button></a>
-</div>
-</div>
-</Div>
-{% endblock content %}
+
+
+        <!-- <div class=" py-20 h-[100vh] w-full absolute">
+            <div class="h-[60vh] rounded-3xl ml-32 w-[50vh] bg-yellow-800 p-5">
+                <div class="text-yellow-600 font-bold text-2xl">{{prod.name}}</div>
+                <div class="mt-2"><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon
+                        name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon></div>
+                <Div class="text-gray-100 mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sed,
+                    possimus amet autem adipisci rem suscipit ipsam saepe quasi excepturi, accusantium aperiam. A ex
+                    quod eveniet voluptate, voluptas asperiores quis.</Div>
+                <div class="text-6xl font-bold text-yellow-600  mt-10">₹{{prod.price}}</div>
+                <a href="/addtocart/{{prod.id}}"> <button
+                        class="px-10 py-2 mr-5 font-semibold rounded-r-full rounded-bl-full mt-5  hover:border-2 hover:border-yellow-600 hover:text-yellow-600 hover:bg-transparent bg-yellow-600 text-gray-50">Add
+                        to cart</button></a>
+            </div>
+        </div> -->
+    </Div>
+    {% endblock content %}
