@@ -23,7 +23,6 @@
               </span>
             </div>
             <div class="text-right">
-              <!-- Set the initial progress value to 0% -->
               <span id="progressText" class="text-xs font-semibold inline-block text-yellow-600">0%</span>
             </div>
           </div>
@@ -45,8 +44,13 @@
     </div>
   </div>
 
-  <!-- Audio element for meditation sounds -->
   <audio id="whiteNoise" preload="auto" loop>
+    <source src="../static/white.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="yogaMusic" preload="auto" loop>
+    <source src="../static/yoga.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="lofi" preload="auto" loop>
     <source src="../static/lofi.mp3" type="audio/mpeg">
   </audio>
 
@@ -58,6 +62,8 @@
     const progressBar = document.getElementById('progressBar');
     const progressText = document.getElementById('progressText');
     const whiteNoiseAudio = document.getElementById('whiteNoise');
+    const yogaMusicAudio = document.getElementById('yogaMusic');
+    const lofiAudio = document.getElementById('lofi');
     let duration = 0;
     let timeLeft = 0;
     let timerInterval;
@@ -65,14 +71,14 @@
 
     function startSession(sessionDuration) {
       if (isSessionRunning) {
-        window.location.reload(); // Refresh the page if a session is already running
+        window.location.reload();
         return;
       }
 
       duration = sessionDuration;
       timeLeft = duration * 60;
       updateTimerDisplay(timeLeft);
-      updateProgress(0); // Set the initial progress to 0%
+      updateProgress(0);
       startButton.disabled = false;
       pauseButton.disabled = true;
       resumeButton.style.display = 'none';
@@ -80,15 +86,17 @@
     }
 
     function startTimer() {
-      if (duration === 0) return; // Check if a session has been selected
-      isSessionRunning = true; // Set the flag to indicate that a session is running
+      if (duration === 0) return;
+      isSessionRunning = true; 
       startButton.disabled = true;
       pauseButton.disabled = false;
       resumeButton.style.display = 'none';
 
       timerInterval = setInterval(updateTime, 1000);
       paused = false;
-      whiteNoiseAudio.play(); // Start playing the selected sound
+      whiteNoiseAudio.play(); 
+      yogaMusicAudio.play(); 
+      lofiAudio.play(); 
     }
 
     function updateTime() {
@@ -102,9 +110,11 @@
         startButton.disabled = false;
         pauseButton.disabled = true;
         resumeButton.style.display = 'none';
-        isSessionRunning = false; // Reset the session running flag
+        isSessionRunning = false; 
         paused = false;
-        whiteNoiseAudio.pause(); // Pause the audio when the session is paused
+        whiteNoiseAudio.pause(); 
+        yogaMusicAudio.pause(); 
+        lofiAudio.pause(); 
       }
     }
 
@@ -128,7 +138,9 @@
       pauseButton.style.display = 'none';
       resumeButton.style.display = 'inline-block';
       paused = true;
-      whiteNoiseAudio.pause(); // Pause the audio when the session is paused
+      whiteNoiseAudio.pause();
+      yogaMusicAudio.pause();
+      lofiAudio.pause();
     }
 
     function resumeTimer() {
@@ -136,13 +148,17 @@
       startButton.style.display = 'inline-block';
       pauseButton.style.display = 'inline-block';
       resumeButton.style.display = 'none';
-      whiteNoiseAudio.play(); // Resume playing the audio when the session is resumed
+      whiteNoiseAudio.play();
+      yogaMusicAudio.play();
+      lofiAudio.play();
     }
 
-    let isSessionRunning = false; // Track if a session is currently running
+    let isSessionRunning = false;
 
     function selectMeditationSound(soundPath) {
       whiteNoiseAudio.src = soundPath;
+      yogaMusicAudio.src = soundPath;
+      lofiAudio.src = soundPath;
 
       const whiteNoiseBtn = document.getElementById('whiteNoiseBtn');
       const yogaMusicBtn = document.getElementById('yogaMusicBtn');
