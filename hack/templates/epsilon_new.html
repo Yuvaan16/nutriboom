@@ -26,11 +26,11 @@
 <div class="flex flex-cols ">
     <div class="w-2/3">
         <div class="h-[30vh]  px-20 relative">
-            <h1 class="text-5xl absolute font-bold text-yellow-600">Hi, Ann.<br>Check your <br>progress 👋🏻
+            <h1 class="text-5xl absolute font-bold text-yellow-600">Hi, {{current_user.username}}.<br>Check your <br>progress 👋🏻
             </h1>
-            <div
-                class="absolute top-5 rounded-3xl right-20 justify-end h-12 w-52 bg-yellow-800 flex flex-cols justify-center items-center text-white">
-                📆 &nbsp;&nbsp; &nbsp;29 Jul</div>
+            <div 
+                class="absolute top-5  rounded-3xl right-20 justify-end h-12 w-52 bg-yellow-800 flex flex-cols justify-center items-center text-white">
+                📆 &nbsp;&nbsp; &nbsp;<p id="currentDate"></p></div>
         </div>
         <div class="h-[70vh] px-20 relative">
             <div class="grid gap-5">
@@ -81,10 +81,10 @@
     <div class="grid">
     <div class="w-[30vw] h-[51vh] rounded-3xl bg-yellow-800 p-10">
         <div class="flex flex-cols justify-center items-center">
-            <div class="grid">
+            <div class="grid"> <div class="flex flex-cols justify-center items-center">
                 <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80"
-                    class="w-16 rounded-full  h-16">
-                <h1 class="text-white text-2xl text-center mt-3">Mr. Ann</h1>
+                    class="w-16 rounded-full  h-16"></div>
+                <h1 class="text-white text-2xl text-center mt-3">{{current_user.username}}</h1>
             </div>
 
         </div>
@@ -105,9 +105,9 @@
                             class="text-center text-sm font-light">Video Library</span></h1>
                 </div></a>
 
-                <a><div class="h-20 w-48 bg-[#FFFAF7] rounded-3xl flex flex-cols justify-center items-center transition ease-in-out delay-100 hover:-translate-1 hover:scale-105 hover:bg-orange-50 duration-300 px-4 py-2 shadow-lg cursor-pointer border border-yellow-800">
-                    <h1 class="text-md text-center font-bold">Feature<br><span
-                            class="text-center text-sm font-light">About</span></h1>
+                <a href="{{url_for('explore')}}"><div class="h-20 w-48 bg-[#FFFAF7] rounded-3xl flex flex-cols justify-center items-center transition ease-in-out delay-100 hover:-translate-1 hover:scale-105 hover:bg-orange-50 duration-300 px-4 py-2 shadow-lg cursor-pointer border border-yellow-800">
+                    <h1 class="text-md text-center font-bold">NutriStore<br><span
+                            class="text-center text-sm font-light">Supplements marketplace</span></h1>
                 </div></a>
             </div>
         </div>
@@ -203,5 +203,22 @@
 
     // Display the first quote when the page loads
     displayQuote();
+</script>
+<Script>
+const months = [
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
+        "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
+
+    const currentDate = new Date();
+    const day = currentDate.getDate();
+    const monthIndex = currentDate.getMonth();
+    const month = months[monthIndex];
+
+    const formattedDate = `${day} ${month}`;
+
+    // Display the formatted date inside the <p> tag with id="currentDate"
+    const pTag = document.getElementById("currentDate");
+    pTag.textContent = formattedDate;
 </script>
 {% endblock content %}

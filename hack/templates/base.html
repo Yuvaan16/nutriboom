@@ -7,12 +7,18 @@
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://cdn.tailwindcss.com"></script>
+	<link rel="icon" type="image/x-icon" href="{{url_for('static', filename='logo.png')}}">
 	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<title>NutriBoom</title>
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 	<link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400&f[]=panchang@600&display=swap" rel="stylesheet">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='favicon-32x32.png')}}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='favicon-16x16.png')}}">
+	<link rel="manifest" href="{{url_for('static', filename='site.webmanifest')}}">
 	{%block head%}
 	{%endblock head%}
 </head>
@@ -25,32 +31,22 @@
 					<a rel="noopener noreferrer" href="/" aria-label="Back to homepage" class="flex items-center p-2">
 						<img src="{{url_for('static', filename='logo.png')}}" class=w-16>
 					</a>
+					<div class="flex flex-cols justify-center items-center"><h1 class="font-bold text-xl text-yellow-800">NutriBoom</h1></div>
 					<ul class="items-stretch hidden space-x-3 lg:flex">
-						<li class="flex">
-
-						</li>
-						{%if not current_user.is_authenticated%}
-						<li class="flex hidden">
-							<a rel="noopener noreferrer" href="{{url_for('register')}}"
-								class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Register</a>
-
-						</li>
-						{%else%}
-						<a rel="noopener noreferrer" href="{{url_for('explore')}}"
-							class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Buy</a>
-							{%if current_user.premium==0%}
-							<a rel="noopener noreferrer" href="{{url_for('get_premium')}}"
-								class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Premium</a>
-								<a rel="noopener noreferrer" href="{{url_for('survey')}}"
-									class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Demo Premium</a>
-							{%endif%}
-						{%endif%}
-
-						{%if current_user.premium==1%}
-						<a rel="noopener noreferrer" href="{{url_for('epsilon')}}"
-							class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Dashboard</a>
-						{%endif%}
-					</ul>
+						{% if not current_user.is_authenticated %}
+						  
+						{% else %}
+						  <a rel="noopener noreferrer" href="{{url_for('explore')}}" class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Shop</a>
+						  {% if current_user.premium == 0 %}
+							<a rel="noopener noreferrer" href="{{url_for('get_premium')}}" class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Premium</a>
+							<a rel="noopener noreferrer" href="{{url_for('survey')}}" class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Demo Premium</a>
+						  {% endif %}
+						{% endif %}
+					  
+						{% if current_user.premium == 1 %}
+						  <a rel="noopener noreferrer" href="{{url_for('epsilon')}}" class="flex items-center px-4 -mb-1 border-b-2 border-transparent hover:underline-offset-4 hover:underline">Dashboard</a>
+						{% endif %}
+					  </ul>
 				</div>
 				  {%if current_user.is_authenticated%}
 
@@ -98,14 +94,14 @@
             }
         });
     </script>
-		  <footer class="text-gray-600 body-font">
+		  <footer class="text-gray-600 body-font mt-20	">
 			<div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
 			  <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
 				<img src="{{url_for('static', filename='logo.png')}}" class="w-20">
 				<span class="ml-3 text-xl">Nutri Boom</span>
 			  </a>
 			  <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2023 Nutri Boom —
-				<a href="/" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">Made with ❤️ by Team XINO</a>
+				<a href="https://xino.in/" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">Made with ❤️ by Team XINO</a>
 			  </p>
 			  <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
 				<a class="text-gray-500">
